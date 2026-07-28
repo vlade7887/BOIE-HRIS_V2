@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Unit extends Model
+class EmploymentStatus extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'base_id',
-        'unit_code',
-        'unit_name',
+        'status_code',
+        'status_name',
         'remarks',
         'is_active',
     ];
@@ -22,15 +21,5 @@ class Unit extends Model
         return [
             'is_active' => 'boolean',
         ];
-    }
-
-    public function base()
-    {
-        return $this->belongsTo(Base::class);
-    }
-
-    public function departments()
-    {
-        return $this->hasMany(Department::class);
     }
 }

@@ -2,7 +2,12 @@
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeClassController;
+use App\Http\Controllers\EmploymentStatusController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::post('companies/{id}/restore', [CompanyController::class, 'restore'])->name('companies.restore');
     Route::resource('bases', BaseController::class);
     Route::resource('units', UnitController::class);
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('sections', SectionController::class);
+    Route::resource('positions', PositionController::class);
+    Route::resource('employment-statuses', EmploymentStatusController::class);
+    Route::resource('employee-classes', EmployeeClassController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

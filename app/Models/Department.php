@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Unit extends Model
+class Department extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'base_id',
-        'unit_code',
-        'unit_name',
+        'unit_id',
+        'department_code',
+        'department_name',
         'remarks',
         'is_active',
     ];
@@ -24,13 +24,13 @@ class Unit extends Model
         ];
     }
 
-    public function base()
+    public function unit()
     {
-        return $this->belongsTo(Base::class);
+        return $this->belongsTo(Unit::class);
     }
 
-    public function departments()
+    public function sections()
     {
-        return $this->hasMany(Department::class);
+        return $this->hasMany(Section::class);
     }
 }
