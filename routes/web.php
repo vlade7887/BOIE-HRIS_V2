@@ -4,6 +4,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeClassController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmploymentStatusController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('positions', PositionController::class);
     Route::resource('employment-statuses', EmploymentStatusController::class);
     Route::resource('employee-classes', EmployeeClassController::class);
+    Route::resource('employees', EmployeeController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
