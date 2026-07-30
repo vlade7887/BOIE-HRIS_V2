@@ -1,58 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# BOIE HRIS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Human Resource Information System for BOIE Incorporated.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Information
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Framework:
+Laravel 13
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Language:
+PHP 8.3
 
-## Learning Laravel
+Database:
+MySQL
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Architecture:
+MVC + Service Layer
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Frontend:
+Bootstrap 5
+AdminLTE
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## Documentation
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Project documentation is located in:
 
-```bash
-composer require laravel/boost --dev
+docs/
 
-php artisan boost:install
-```
+Before making any code changes, read the documents in the following order:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+1. AI Development Guide.md
+2. CURRENT-WORK.md
+3. PROJECT-BIBLE.md
+4. PROJECT-ARCHITECTURE.md
+5. DEVELOPMENT-STANDARDS.md
+6. DATABASE-STANDARDS.md
+7. PROJECT-ROADMAP.md
+8. CHANGELOG.md
+9. SPRINT-LOG.md
+10. Current Module Specification
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Development Workflow
 
-## Code of Conduct
+Every developer or AI assistant must:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Read all required documentation.
+2. Review the existing implementation.
+3. Report current project status.
+4. Wait for user approval before writing code.
+5. Follow all project standards.
+6. Update documentation after completing work.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Coding Standards
+
+- Keep Controllers thin.
+- Business logic belongs in Services.
+- Validation belongs in Form Requests.
+- Use Eloquent Relationships.
+- Use DB::transaction() when updating multiple related tables.
+- Never modify unrelated modules.
+
+---
+
+## Current Status
+
+See:
+
+docs/CURRENT-WORK.md
+
+---
+
+## Module Specifications
+
+Module specifications are located in:
+
+modules/
+
+Examples:
+
+- Company-Specification.md
+- Employee-Specification.md
+- Attendance-Specification.md
+- Leave-Specification.md
+- Payroll-Specification.md
+
+---
+
+## AI Instructions
+
+Before writing code:
+
+- Read the required documentation.
+- Review the existing implementation.
+- Do not assume missing functionality.
+- Preserve the current architecture.
+- Follow all development standards.
+- Report findings before implementation.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Internal use only.
+
+BOIE Incorporated.

@@ -104,4 +104,29 @@ class Employee extends Model
     {
         return $this->belongsTo(Employee::class, 'department_head_id');
     }
+
+    public function employeeContact()
+    {
+        return $this->hasOne(EmployeeContact::class);
+    }
+
+    public function employeeAddress()
+    {
+        return $this->hasOne(EmployeeAddress::class);
+    }
+
+    public function employeeGovernmentId()
+    {
+        return $this->hasOne(EmployeeGovernmentId::class);
+    }
+
+    public function employeeEmergencyContacts()
+    {
+        return $this->hasMany(EmployeeEmergencyContact::class);
+    }
+
+    public function employeeDocuments()
+    {
+        return $this->hasMany(EmployeeDocument::class);
+    }
 }

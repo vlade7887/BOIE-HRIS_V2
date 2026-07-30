@@ -3,8 +3,13 @@
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeAddressController;
 use App\Http\Controllers\EmployeeClassController;
+use App\Http\Controllers\EmployeeContactController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeDocumentController;
+use App\Http\Controllers\EmployeeEmergencyContactController;
+use App\Http\Controllers\EmployeeGovernmentIdController;
 use App\Http\Controllers\EmploymentStatusController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('employment-statuses', EmploymentStatusController::class);
     Route::resource('employee-classes', EmployeeClassController::class);
     Route::resource('employees', EmployeeController::class);
+    Route::resource('employee-contacts', EmployeeContactController::class);
+    Route::resource('employee-addresses', EmployeeAddressController::class);
+    Route::resource('employee-government-ids', EmployeeGovernmentIdController::class);
+    Route::resource('employee-emergency-contacts', EmployeeEmergencyContactController::class);
+    Route::resource('employee-documents', EmployeeDocumentController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
