@@ -59,7 +59,7 @@
                                     <div class="col-md-3"><label class="form-label">Civil Status <span class="text-danger">*</span></label><select name="civil_status" class="form-select"><option value="" disabled>Select civil status</option>@foreach(['Single', 'Married', 'Widowed', 'Separated'] as $value)<option value="{{ $value }}" @selected(old('civil_status', $employee->civil_status) === $value)>{{ $value }}</option>@endforeach</select></div>
                                     <div class="col-md-3"><label class="form-label">Birth Date <span class="text-danger">*</span></label><input type="date" name="birth_date" class="form-control" value="{{ old('birth_date', $employee->birth_date?->format('Y-m-d')) }}"></div>
                                     @foreach(['birth_place' => 'Birth Place', 'nationality' => 'Nationality', 'religion' => 'Religion', 'blood_type' => 'Blood Type'] as $field => $label)
-                                        <div class="col-md-3"><label class="form-label">{{ $label }}</label><input type="text" name="{{ $field }}" class="form-control" value="{{ old($field, $employee->{$field}) }}"></div>
+                                        <div class="col-md-3"><label class="form-label">{{ $label }}</label><input type="text" name="{{ $field }}" class="form-control" value="{{ old($field, $employee->{$field} ?: 'Filipino') }}"></div>
                                     @endforeach
                                 </div>
                             </div>

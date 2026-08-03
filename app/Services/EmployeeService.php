@@ -35,7 +35,18 @@ class EmployeeService
 
     private function employeeData(array $data): array
     {
-        return collect($data)->only((new Employee())->getFillable())->all();
+        $employeeData = collect($data)->only((new Employee())->getFillable())->all();
+
+        $employeeData['nationality'] = $this->normalizeNationality($employeeData['nationality'] ?? null);
+
+        return $employeeData;
+    }
+
+    private function normalizeNationality(?string $nationality): string
+    {
+        $normalized = trim((string) $nationality);
+
+        return $normalized !== '' ? $normalized : 'Filipino';
     }
 
     private function contactData(array $data): array

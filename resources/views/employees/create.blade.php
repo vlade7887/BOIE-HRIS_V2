@@ -21,6 +21,16 @@
         </div>
 
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <h5 class="alert-heading">Please correct the highlighted fields.</h5>
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row g-4 align-items-start">
                 <div class="col-lg-3">
                     <div class="card border-0 bg-light">
@@ -37,10 +47,10 @@
                 <div class="col-lg-9">
                     <ul class="nav nav-tabs" id="employee201Tabs" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab">Personal Information</button>
+                            <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab">Personal Information @if($errors->hasAny(['employee_no', 'last_name', 'first_name', 'gender', 'civil_status', 'birth_date']))<span class="badge bg-danger">!</span>@endif</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="employment-tab" data-bs-toggle="tab" data-bs-target="#employment" type="button" role="tab">Employment</button>
+                            <button class="nav-link" id="employment-tab" data-bs-toggle="tab" data-bs-target="#employment" type="button" role="tab">Employment @if($errors->hasAny(['company_id', 'base_id', 'unit_id', 'department_id', 'section_id', 'position_id', 'employment_status_id', 'employee_class_id', 'date_hired']))<span class="badge bg-danger">!</span>@endif</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">Contact</button>
@@ -64,7 +74,8 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Employee Number <span class="text-danger">*</span></label>
-                                    <input type="text" name="employee_no" class="form-control" placeholder="Example: 224-1001" value="{{ old('employee_no') }}">
+                                    <input type="text" name="employee_no" class="form-control @error('employee_no') is-invalid @enderror" placeholder="Example: 224-1001" value="{{ old('employee_no') }}">
+                                    @error('employee_no')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Biometric ID</label>
@@ -72,11 +83,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Last Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="last_name" class="form-control" placeholder="Enter last name" value="{{ old('last_name') }}">
+                                    <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter last name" value="{{ old('last_name') }}">
+                                    @error('last_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">First Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="first_name" class="form-control" placeholder="Enter first name" value="{{ old('first_name') }}">
+                                    <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter first name" value="{{ old('first_name') }}">
+                                    @error('first_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Middle Name</label>
@@ -92,26 +105,29 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                    <select name="gender" class="form-select">
+                                    <select name="gender" class="form-select @error('gender') is-invalid @enderror">
                                         <option value="" {{ old('gender') === null ? 'selected' : '' }} disabled>Select gender</option>
                                         <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
                                         <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
                                         <option value="Prefer not to say" {{ old('gender') == 'Prefer not to say' ? 'selected' : '' }}>Prefer not to say</option>
                                     </select>
+                                    @error('gender')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Civil Status <span class="text-danger">*</span></label>
-                                    <select name="civil_status" class="form-select">
+                                    <select name="civil_status" class="form-select @error('civil_status') is-invalid @enderror">
                                         <option value="" {{ old('civil_status') === null ? 'selected' : '' }} disabled>Select civil status</option>
                                         <option value="Single" {{ old('civil_status') == 'Single' ? 'selected' : '' }}>Single</option>
                                         <option value="Married" {{ old('civil_status') == 'Married' ? 'selected' : '' }}>Married</option>
                                         <option value="Widowed" {{ old('civil_status') == 'Widowed' ? 'selected' : '' }}>Widowed</option>
                                         <option value="Separated" {{ old('civil_status') == 'Separated' ? 'selected' : '' }}>Separated</option>
                                     </select>
+                                    @error('civil_status')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Birth Date <span class="text-danger">*</span></label>
-                                    <input type="date" name="birth_date" class="form-control" value="{{ old('birth_date') }}">
+                                    <input type="date" name="birth_date" class="form-control @error('birth_date') is-invalid @enderror" value="{{ old('birth_date') }}">
+                                    @error('birth_date')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Birth Place</label>
@@ -119,7 +135,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Nationality</label>
-                                    <input type="text" name="nationality" class="form-control" placeholder="Enter nationality" value="{{ old('nationality') }}">
+                                    <input type="text" name="nationality" class="form-control" placeholder="Enter nationality" value="{{ old('nationality', 'Filipino') }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Religion</label>
@@ -136,79 +152,88 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Company <span class="text-danger">*</span></label>
-                                    <select name="company_id" class="form-select">
+                                    <select name="company_id" class="form-select @error('company_id') is-invalid @enderror">
                                         <option value="" {{ old('company_id') === null ? 'selected' : '' }} disabled>Select company</option>
                                         @foreach($companies as $company)
                                             <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->company_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('company_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Base <span class="text-danger">*</span></label>
-                                    <select name="base_id" class="form-select">
+                                    <select name="base_id" class="form-select @error('base_id') is-invalid @enderror">
                                         <option value="" {{ old('base_id') === null ? 'selected' : '' }} disabled>Select base</option>
                                         @foreach($bases as $base)
                                             <option value="{{ $base->id }}" {{ old('base_id') == $base->id ? 'selected' : '' }}>{{ $base->base_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('base_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Unit</label>
-                                    <select name="unit_id" class="form-select">
+                                    <label class="form-label">Unit <span class="text-danger">*</span></label>
+                                    <select name="unit_id" class="form-select @error('unit_id') is-invalid @enderror">
                                         <option value="" {{ old('unit_id') === null ? 'selected' : '' }} disabled>Select unit</option>
                                         @foreach($units as $unit)
                                             <option value="{{ $unit->id }}" {{ old('unit_id') == $unit->id ? 'selected' : '' }}>{{ $unit->unit_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('unit_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Department <span class="text-danger">*</span></label>
-                                    <select name="department_id" class="form-select">
+                                    <select name="department_id" class="form-select @error('department_id') is-invalid @enderror">
                                         <option value="" {{ old('department_id') === null ? 'selected' : '' }} disabled>Select department</option>
                                         @foreach($departments as $department)
                                             <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>{{ $department->department_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('department_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">Section</label>
-                                    <select name="section_id" class="form-select">
+                                    <label class="form-label">Section <span class="text-danger">*</span></label>
+                                    <select name="section_id" class="form-select @error('section_id') is-invalid @enderror">
                                         <option value="" {{ old('section_id') === null ? 'selected' : '' }} disabled>Select section</option>
                                         @foreach($sections as $section)
                                             <option value="{{ $section->id }}" {{ old('section_id') == $section->id ? 'selected' : '' }}>{{ $section->section_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('section_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Position <span class="text-danger">*</span></label>
-                                    <select name="position_id" class="form-select">
+                                    <select name="position_id" class="form-select @error('position_id') is-invalid @enderror">
                                         <option value="" {{ old('position_id') === null ? 'selected' : '' }} disabled>Select position</option>
                                         @foreach($positions as $position)
                                             <option value="{{ $position->id }}" {{ old('position_id') == $position->id ? 'selected' : '' }}>{{ $position->position_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('position_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Employment Status <span class="text-danger">*</span></label>
-                                    <select name="employment_status_id" class="form-select">
+                                    <select name="employment_status_id" class="form-select @error('employment_status_id') is-invalid @enderror">
                                         <option value="" {{ old('employment_status_id') === null ? 'selected' : '' }} disabled>Select status</option>
                                         @foreach($employmentStatuses as $employmentStatus)
                                             <option value="{{ $employmentStatus->id }}" {{ old('employment_status_id') == $employmentStatus->id ? 'selected' : '' }}>{{ $employmentStatus->status_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('employment_status_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Employee Class <span class="text-danger">*</span></label>
-                                    <select name="employee_class_id" class="form-select">
+                                    <select name="employee_class_id" class="form-select @error('employee_class_id') is-invalid @enderror">
                                         <option value="" {{ old('employee_class_id') === null ? 'selected' : '' }} disabled>Select class</option>
                                         @foreach($employeeClasses as $employeeClass)
                                             <option value="{{ $employeeClass->id }}" {{ old('employee_class_id') == $employeeClass->id ? 'selected' : '' }}>{{ $employeeClass->class_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('employee_class_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Date Hired <span class="text-danger">*</span></label>
-                                    <input type="date" name="date_hired" class="form-control" value="{{ old('date_hired') }}">
+                                    <input type="date" name="date_hired" class="form-control @error('date_hired') is-invalid @enderror" value="{{ old('date_hired') }}">
+                                    @error('date_hired')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Date Regularized</label>
@@ -375,5 +400,6 @@
             <button type="submit" class="btn btn-primary">Save Employee</button>
         </div>
     </div>
+    </form>
 </div>
 @endsection

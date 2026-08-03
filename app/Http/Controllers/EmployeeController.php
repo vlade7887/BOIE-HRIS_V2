@@ -47,11 +47,27 @@ class EmployeeController extends Controller
     {
         $employee = $employeeService->create($request->validated());
 
-        return redirect()->route('employees.edit', $employee)->with('status', 'Employee created successfully.');
+        return redirect()->route('employees.show', $employee)->with('success', 'Employee created successfully.');
     }
 
     public function show(Employee $employee): View
     {
+        $employee->load([
+            'company',
+            'base',
+            'unit',
+            'department',
+            'section',
+            'position',
+            'employmentStatus',
+            'employeeClass',
+            'employeeContact',
+            'employeeAddress',
+            'employeeGovernmentId',
+            'employeeEmergencyContacts',
+            'employeeDocuments',
+        ]);
+
         return view('employees.show', compact('employee'));
     }
 
@@ -67,14 +83,14 @@ class EmployeeController extends Controller
     {
         $employeeService->update($employee, $request->validated());
 
-        return redirect()->route('employees.edit', $employee)->with('status', 'Employee updated successfully.');
+        return redirect()->route('employees.show', $employee)->with('success', 'Employee updated successfully.');
     }
 
     public function destroy(Employee $employee): RedirectResponse
     {
         $employee->delete();
 
-        return redirect()->route('employees.index')->with('status', 'Employee archived successfully.');
+        return redirect()->route('employees.index')->with('success', 'Employee archived successfully.');
     }
 
     private function formData(?Employee $employee = null): array

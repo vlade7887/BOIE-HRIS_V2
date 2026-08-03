@@ -2,6 +2,23 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-03 — Employee Create Master Data and Validation Feedback
+
+Status: Complete
+
+- Added idempotent development seed data for the employee organization hierarchy, employment statuses, and employee classes.
+- Added create-form validation summary, tab error indicators, required-field Bootstrap feedback, and the missing closing form tag.
+- Added feature tests for seeded create options, validation feedback, valid employee creation, supporting records, and repeated seeding.
+
+## 2026-08-03 — Employee Profile View
+
+Status: Complete
+
+- Added the read-only Employee 201 profile page.
+- Eager loaded employee master, organization, contact, address, government-ID, emergency-contact, and document metadata relationships.
+- Masked government IDs and withheld document storage paths from the rendered profile.
+- Added feature tests for profile display, missing optional data, masking, and 404 handling.
+
 ## 2026-07-30 — Employee Module Completion v1.0
 
 Status: Complete

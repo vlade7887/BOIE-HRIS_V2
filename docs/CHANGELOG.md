@@ -6,6 +6,18 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Employee Create Master Data and Validation Feedback
+
+- Added idempotent development master-data seeding for the Employee create workflow.
+- Added visible create-form validation summary, tab indicators, required-field feedback, and the missing closing form tag.
+- Added feature coverage for seeded options, validation feedback, employee creation, supporting-record creation, and repeatable seeding.
+
+### Employee Profile View
+
+- Added the read-only Employee 201 profile page with eager-loaded employee, organization, contact, address, emergency-contact, and document metadata.
+- Added masked display accessors for government IDs; raw identifiers and document file paths are not rendered on the profile page.
+- Added feature coverage for employee-profile display, missing optional relationships, identifier masking, and unknown employee handling.
+
 ### Employee Module Completion v1.0
 
 - Completed Employee 201 create and edit persistence for employee, contact, address, and government-ID data.
