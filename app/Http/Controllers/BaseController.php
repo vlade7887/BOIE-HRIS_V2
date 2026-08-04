@@ -5,16 +5,36 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBaseRequest;
 use App\Http\Requests\UpdateBaseRequest;
 use App\Models\Base;
+use App\Models\Employee;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class BaseController extends Controller
 {
     public function index(): View
     {
-        $bases = Base::latest()->get();
+        $search = request('search');
+        $view = request('view');
 
-        return view('bases.index', compact('bases'));
+        $query = Base::query();
+
+        if ($view === 'archived') {
+            $query->onlyTrashed();
+        } else {
+            $query->withoutTrashed();
+        }
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('base_code', 'like', "%{$search}%")
+                    ->orWhere('base_name', 'like', "%{$search}%");
+            });
+        }
+
+        $bases = $query->latest()->paginate(10);
+
+        return view('bases.index', compact('bases', 'search', 'view'));
     }
 
     public function create(): View
@@ -28,7 +48,7 @@ class BaseController extends Controller
     {
         Base::create($request->validated());
 
-        return redirect()->route('bases.index')->with('status', 'Base created successfully.');
+        return Redirect::route('bases.index')->with('success', 'Base created successfully.');
     }
 
     public function show(Base $base): View
@@ -45,13 +65,31 @@ class BaseController extends Controller
     {
         $base->update($request->validated());
 
-        return redirect()->route('bases.index')->with('status', 'Base updated successfully.');
+        return Redirect::route('bases.index')->with('success', 'Base updated successfully.');
     }
 
-    public function destroy(Base $base): RedirectResponse
+
+    public function archive(Base $base): RedirectResponse
     {
+        $hasActiveDependencies = Employee::query()
+            ->where('base_id', $base->id)
+            ->where('is_active', true)
+            ->exists();
+
+        if ($hasActiveDependencies) {
+            return Redirect::back()->withErrors(['base' => 'Cannot archive this base because active employees still reference it.']);
+        }
+
         $base->delete();
 
-        return redirect()->route('bases.index')->with('status', 'Base archived successfully.');
+        return Redirect::route('bases.index')->with('success', 'Base archived successfully.');
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        $base = Base::withTrashed()->findOrFail($id);
+        $base->restore();
+
+        return Redirect::route('bases.index')->with('success', 'Base restored successfully.');
     }
 }

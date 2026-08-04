@@ -6,6 +6,13 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Base Master Data
+
+- Completed Base master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the Company implementation pattern.
+- Added soft-delete archive protection when active employees reference a Base.
+- Added Base feature tests and verified the full suite at 83 passing tests and 302 assertions.
+- Next implementation module: Unit.
+
 ### Employee Create Master Data and Validation Feedback
 
 - Added idempotent development master-data seeding for the Employee create workflow.

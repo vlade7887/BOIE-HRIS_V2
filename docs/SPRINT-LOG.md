@@ -2,6 +2,16 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-04 - Base Master Data
+
+Status: Complete
+
+- Completed Base master-data index, search, pagination, create, show, edit, archive, archived listing, and restore workflows using the Company module pattern.
+- Added active-employee dependency protection for Base archive operations with soft-delete-only behavior and flash/error feedback.
+- Added Base feature coverage for authentication, CRUD, search, pagination, archive, restore, dependency protection, validation, and flash messages.
+- Verification: 83 tests passed, 302 assertions.
+- Next module: Unit Master Data.
+
 ## 2026-08-03 — Employee Create Master Data and Validation Feedback
 
 Status: Complete

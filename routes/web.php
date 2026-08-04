@@ -29,7 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('companies', CompanyController::class);
     Route::post('companies/{company}/archive', [CompanyController::class, 'archive'])->name('companies.archive');
     Route::post('companies/{id}/restore', [CompanyController::class, 'restore'])->name('companies.restore');
-    Route::resource('bases', BaseController::class);
+    Route::resource('bases', BaseController::class)
+        ->except(['destroy'])
+        ->parameters(['bases' => 'base']);
+    Route::post('bases/{base}/archive', [BaseController::class, 'archive'])->name('bases.archive');
+    Route::post('bases/{id}/restore', [BaseController::class, 'restore'])->name('bases.restore');
     Route::resource('units', UnitController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('sections', SectionController::class);
