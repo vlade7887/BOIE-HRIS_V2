@@ -35,7 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('sections', SectionController::class);
     Route::resource('positions', PositionController::class);
     Route::resource('employment-statuses', EmploymentStatusController::class);
+    Route::post('employment-statuses/{employmentStatus}/archive', [EmploymentStatusController::class, 'archive'])->name('employment-statuses.archive');
+    Route::post('employment-statuses/{id}/restore', [EmploymentStatusController::class, 'restore'])->name('employment-statuses.restore');
     Route::resource('employee-classes', EmployeeClassController::class);
+    Route::post('employee-classes/{employeeClass}/archive', [EmployeeClassController::class, 'archive'])->name('employee-classes.archive');
+    Route::post('employee-classes/{id}/restore', [EmployeeClassController::class, 'restore'])->name('employee-classes.restore');
     Route::resource('employees', EmployeeController::class);
     Route::resource('employee-contacts', EmployeeContactController::class);
     Route::resource('employee-addresses', EmployeeAddressController::class);

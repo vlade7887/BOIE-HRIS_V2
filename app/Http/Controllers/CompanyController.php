@@ -5,16 +5,36 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class CompanyController extends Controller
 {
     public function index(): View
     {
-        $companies = Company::latest()->get();
+        $search = request('search');
+        $view = request('view');
 
-        return view('companies.index', compact('companies'));
+        $query = Company::query();
+
+        if ($view === 'archived') {
+            $query->onlyTrashed();
+        } else {
+            $query->withoutTrashed();
+        }
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('company_code', 'like', "%{$search}%")
+                    ->orWhere('company_name', 'like', "%{$search}%");
+            });
+        }
+
+        $companies = $query->latest()->paginate(10);
+
+        return view('companies.index', compact('companies', 'search', 'view'));
     }
 
     public function create(): View
@@ -28,7 +48,7 @@ class CompanyController extends Controller
     {
         Company::create($request->validated());
 
-        return redirect()->route('companies.index')->with('status', 'Company created successfully.');
+        return Redirect::route('companies.index')->with('success', 'Company created successfully.');
     }
 
     public function show(Company $company): View
@@ -45,21 +65,28 @@ class CompanyController extends Controller
     {
         $company->update($request->validated());
 
-        return redirect()->route('companies.index')->with('status', 'Company updated successfully.');
+        return Redirect::route('companies.index')->with('success', 'Company updated successfully.');
     }
 
     public function destroy(Company $company): RedirectResponse
     {
-        $company->delete();
-
-        return redirect()->route('companies.index')->with('status', 'Company archived successfully.');
+        return $this->archive($company);
     }
 
     public function archive(Company $company): RedirectResponse
     {
+        $hasActiveDependencies = Employee::query()
+            ->where('company_id', $company->id)
+            ->where('is_active', true)
+            ->exists();
+
+        if ($hasActiveDependencies) {
+            return Redirect::back()->withErrors(['company' => 'Cannot archive this company because active employees still reference it.']);
+        }
+
         $company->delete();
 
-        return redirect()->route('companies.index')->with('status', 'Company archived successfully.');
+        return Redirect::route('companies.index')->with('success', 'Company archived successfully.');
     }
 
     public function restore(string $id): RedirectResponse
@@ -67,6 +94,6 @@ class CompanyController extends Controller
         $company = Company::withTrashed()->findOrFail($id);
         $company->restore();
 
-        return redirect()->route('companies.index')->with('status', 'Company restored successfully.');
+        return Redirect::route('companies.index')->with('success', 'Company restored successfully.');
     }
 }

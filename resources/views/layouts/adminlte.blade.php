@@ -59,6 +59,8 @@
                                 <li class="nav-item"><a href="{{ route('departments.index') }}" class="nav-link"><p>Department</p></a></li>
                                 <li class="nav-item"><a href="{{ route('sections.index') }}" class="nav-link"><p>Section</p></a></li>
                                 <li class="nav-item"><a href="{{ route('positions.index') }}" class="nav-link"><p>Position</p></a></li>
+                                <li class="nav-item"><a href="{{ route('employment-statuses.index') }}" class="nav-link"><p>Employment Status</p></a></li>
+                                <li class="nav-item"><a href="{{ route('employee-classes.index') }}" class="nav-link"><p>Employee Class</p></a></li>
                             </ul>
                         </li>
 
@@ -69,8 +71,6 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item"><a href="{{ route('employees.index') }}" class="nav-link"><p>Employee List</p></a></li>
-                                <li class="nav-item"><a href="{{ route('employment-statuses.index') }}" class="nav-link"><p>Employment Status</p></a></li>
-                                <li class="nav-item"><a href="{{ route('employee-classes.index') }}" class="nav-link"><p>Employee Class</p></a></li>
                             </ul>
                         </li>
 

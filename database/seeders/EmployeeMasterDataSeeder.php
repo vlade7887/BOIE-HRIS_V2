@@ -71,7 +71,10 @@ class EmployeeMasterDataSeeder extends Seeder
         foreach ([
             'DEV-RAF' => 'Rank and File',
             'DEV-SUPV' => 'Supervisory',
-            'DEV-MGR' => 'Managerial',
+            'DEV-CONF' => 'Confidential',
+            'DEV-MGR1' => 'Managerial 1',
+            'DEV-MGR2' => 'Managerial 2',
+            'DEV-EXEC' => 'Executive',
         ] as $code => $name) {
             $restore(EmployeeClass::withTrashed()->updateOrCreate(
                 ['class_code' => $code],

@@ -133,7 +133,7 @@ class EmployeeCreateTest extends TestCase
         $this->assertSame(1, Section::where('section_code', 'DEV-HROPS')->count());
         $this->assertSame(1, Position::where('position_code', 'DEV-HRSTAFF')->count());
         $this->assertSame(5, EmploymentStatus::where('status_code', 'like', 'DEV-%')->count());
-        $this->assertSame(3, EmployeeClass::where('class_code', 'like', 'DEV-%')->count());
+        $this->assertSame(6, EmployeeClass::where('class_code', 'like', 'DEV-%')->count());
         $this->assertSame(1, User::where('email', 'test@example.com')->count());
     }
 
