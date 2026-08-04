@@ -102,6 +102,12 @@ Pending:
 - Section
 - Position
 - Cascading organization dropdowns in Employee Create/Edit
+- Employee Documents workflow
+- Emergency Contact workflow
+- Roles and Permissions
+- Attendance
+- Leave
+- Payroll
 
 ## Next Planned Work
 Implement Base using the completed Company module as the exact reference pattern.
@@ -112,6 +118,12 @@ Then:
 3. Section
 4. Position
 5. Cascading organization dropdowns in Employee Create/Edit
+6. Employee Documents workflow
+7. Emergency Contact workflow
+8. Roles and Permissions
+9. Attendance
+10. Leave
+11. Payroll
 
 ## Standard Master Data Behavior
 Each master-data module should follow the same pattern:

@@ -12,7 +12,7 @@ Employee Module
 
 # Current Task
 
-Employee Documents
+Base Master Data
 
 ---
 
@@ -27,12 +27,8 @@ Employee Documents
 - Laravel Foundation
 - Authentication
 - Organization Master Data
+- Employee Foundation
 - Company
-- Base
-- Unit
-- Department
-- Section
-- Position
 - Employment Status
 - Employee Class
 - Employee CRUD
@@ -44,15 +40,24 @@ Employee Documents
 
 # Remaining Tasks
 
-- Employee Emergency Contacts
-- Employee Documents
-- Assignment History
+- Base
+- Unit
+- Department
+- Section
+- Position
+- Cascading organization dropdowns
+- Employee Documents workflow
+- Emergency Contact workflow
+- Roles and Permissions
+- Attendance
+- Leave
+- Payroll
 
 ---
 
 # Current Objective
 
-Complete the Employee Module before starting Attendance.
+Complete the planned master-data and employee workflows before starting Attendance.
 
 ---
 
@@ -64,16 +69,8 @@ main
 
 # Next Task
 
-Implement Employee Documents.
+Implement Base Master Data using the completed Company Master Data module as the reference pattern.
 
-Requirements:
-
-- Upload documents
-- Store file path
-- Validate file type
-- Soft Deletes
-- Authorization
-- Transaction if required
 
 ---
 

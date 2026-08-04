@@ -9,18 +9,19 @@ BOIE HRIS is being established around reliable organization and employee master 
 | Stage | Scope | Status |
 | --- | --- | --- |
 | Foundation | Laravel application, Breeze authentication, database-backed sessions and queues | Complete |
-| Organization master data | Company, base, unit, department, section, position, employment status, employee class | Complete |
+| Organization master data | Company, base, unit, department, section, position, employment status, employee class | In progress |
 | Employee master foundation | Employee profile and organization assignment | Complete |
-| Employee supporting data | Contact, address, government ID, emergency contact, document data structures and CRUD work | In progress |
+| Employee supporting data | Contact, address, government ID, emergency contact, document data structures and CRUD work | Planned |
 | HR operational modules | Attendance, leave, payroll, and related workflows | Planned |
 
 ## Next Priorities
 
-1. Complete and verify the employee supporting-data workflows, including document storage validation and access handling.
-2. Add feature tests for implemented organization and employee CRUD workflows, validation, archival, and protected routes.
-3. Define authorization roles and permissions before exposing broader HR operations.
-4. Implement employee assignment history so transfers, promotions, and related changes are auditable rather than overwriting historical context.
-5. Define document retention, download authorization, and production storage strategy.
+1. Implement Base Master Data.
+2. Implement Unit, Department, Section, and Position master data.
+3. Implement cascading organization dropdowns in Employee Create/Edit.
+4. Complete Employee Documents and Emergency Contact workflows.
+5. Define and implement Roles and Permissions before broader HR operations.
+6. Implement Attendance, Leave, and Payroll.
 
 ## Planned Functional Releases
 
