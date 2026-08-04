@@ -45,13 +45,16 @@ Base Master Data
 - Department
 - Section
 - Position
-- Cascading organization dropdowns
+- Approval Workflow
 - Employee Documents workflow
 - Emergency Contact workflow
 - Roles and Permissions
 - Attendance
 - Leave
 - Payroll
+
+Future enhancement only:
+- Cascading or filtered organization dropdowns; not part of the current implementation scope.
 
 ---
 
@@ -70,6 +73,8 @@ main
 # Next Task
 
 Implement Base Master Data using the completed Company Master Data module as the reference pattern.
+
+Approved roadmap order: Base, Unit, Department, Section, Position, Approval Workflow, Employee Documents, Emergency Contacts, Roles and Permissions, Attendance, Leave, Payroll.
 
 
 ---

@@ -19,9 +19,22 @@ BOIE HRIS is being established around reliable organization and employee master 
 1. Implement Base Master Data.
 2. Implement Unit, Department, Section, and Position master data.
 3. Implement cascading organization dropdowns in Employee Create/Edit.
-4. Complete Employee Documents and Emergency Contact workflows.
-5. Define and implement Roles and Permissions before broader HR operations.
-6. Implement Attendance, Leave, and Payroll.
+4. Implement Approval Workflow.
+5. Complete Employee Documents and Emergency Contact workflows.
+6. Define and implement Roles and Permissions before broader HR operations.
+7. Implement Attendance, Leave, and Payroll.
+
+## Approved Implementation Order
+
+Base → Unit → Department → Section → Position → Approval Workflow → Employee Documents → Emergency Contacts → Roles and Permissions → Attendance → Leave → Payroll
+
+## Approved Organization and Approval Decisions
+
+- Base and Unit are for monitoring, reporting, and filtering. Employee Create/Edit keeps independent dropdowns; cascading or filtered dropdowns are future scope.
+- Department may be selected without a Unit and cannot be archived while assigned to active employees.
+- Section and Position remain separate assignment fields. Position codes are unique and names are descriptive.
+- Approval Workflow follows Position and precedes Employee Documents and Leave.
+- Approval Workflow supports multiple ordered employee approvers with approval levels/order, including two or more signatories, and is reusable by Leave and future approval-based modules. HR remains the final processing stage where applicable.
 
 ## Planned Functional Releases
 

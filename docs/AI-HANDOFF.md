@@ -101,7 +101,7 @@ Pending:
 - Department
 - Section
 - Position
-- Cascading organization dropdowns in Employee Create/Edit
+- Approval Workflow
 - Employee Documents workflow
 - Emergency Contact workflow
 - Roles and Permissions
@@ -117,13 +117,30 @@ Then:
 2. Department
 3. Section
 4. Position
-5. Cascading organization dropdowns in Employee Create/Edit
+5. Approval Workflow
 6. Employee Documents workflow
 7. Emergency Contact workflow
 8. Roles and Permissions
 9. Attendance
 10. Leave
 11. Payroll
+
+## Approved Organization Decisions
+
+- Implementation order: Base, Unit, Department, Section, Position.
+- Base and Unit support monitoring, reporting, and filtering only.
+- Employee Create/Edit uses independent organization dropdowns; no cascading dropdowns or strict Base → Unit → Department hierarchy is required.
+- Departments may be selected without a Unit and cannot be archived while assigned to active employees.
+- Section and Position remain separate assignment fields.
+- Position codes must be unique; position names should be descriptive.
+- Cascading or filtered organization dropdowns are a future enhancement, outside the current scope.
+
+## Approved Approval Workflow
+
+- Implement after Position and before Employee Documents and Leave.
+- Support multiple ordered approvers linked to employees, with approval levels/order for two, three, four, or more signatories.
+- Build it for reuse by Leave and future approval-based modules.
+- HR remains the final processing stage where applicable.
 
 ## Standard Master Data Behavior
 Each master-data module should follow the same pattern:
