@@ -2,6 +2,30 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-05 - Section Master Data
+
+Status: Complete
+
+- Completed Section master-data index, search, pagination, create, show, edit, archive, archived listing, and restore workflows using the established master-data patterns.
+- Kept Section independent of Department in business logic and made the existing Department relationship optional.
+- Added active-employee dependency protection for Section archive operations with soft-delete-only behavior and flash/error feedback.
+- Added Section feature coverage for authentication, CRUD, search, pagination, archive, restore, dependency protection, validation, and flash messages.
+- Verification: 114 tests passed, 416 assertions; migration, optimize:clear, view:cache, and git diff --check passed.
+- Next module: Position Master Data.
+- Manual browser smoke testing remains pending because no browser backend was available.
+
+## 2026-08-05 - Department Master Data
+
+Status: Complete
+
+- Completed Department master-data index, search, pagination, create, show, edit, archive, archived listing, and restore workflows using the established Company, Base, and Unit patterns.
+- Kept Department independent of Unit in business logic and made the existing Unit relationship optional.
+- Added active-employee dependency protection for Department archive operations with soft-delete-only behavior and flash/error feedback.
+- Added Department feature coverage for authentication, CRUD, search, pagination, archive, restore, dependency protection, validation, and flash messages.
+- Verification: 104 tests passed, 379 assertions; migration, optimize:clear, view:cache, and git diff --check passed.
+- Next module: Section Master Data.
+- Manual browser smoke testing remains pending because no browser backend was available.
+
 ## 2026-08-05 - Unit Master Data
 
 Status: Complete

@@ -14,7 +14,7 @@ class StoreSectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'department_id' => ['required', 'exists:departments,id'],
+            'department_id' => ['nullable', 'exists:departments,id'],
             'section_code' => ['required', 'string', 'max:20', 'unique:sections,section_code'],
             'section_name' => ['required', 'string', 'max:150'],
             'remarks' => ['nullable', 'string'],

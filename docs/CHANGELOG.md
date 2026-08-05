@@ -6,6 +6,24 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Section Master Data
+
+- Completed Section master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the established master-data patterns.
+- Kept Section independent of Department in business logic and made the existing Department relationship optional.
+- Added soft-delete archive protection when active employees reference a Section.
+- Added Section feature tests and verified the full suite at 114 passing tests and 416 assertions.
+- Next implementation module: Position.
+- Manual browser smoke testing remains pending because no browser backend was available.
+
+### Department Master Data
+
+- Completed Department master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the established master-data patterns.
+- Kept Department independent of Unit in business logic and made the existing Unit relationship optional.
+- Added soft-delete archive protection when active employees reference a Department.
+- Added Department feature tests and verified the full suite at 104 passing tests and 379 assertions.
+- Next implementation module: Section.
+- Manual browser smoke testing remains pending because no browser backend was available.
+
 ### Unit Master Data
 
 - Completed Unit master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the Company and Base implementation patterns.

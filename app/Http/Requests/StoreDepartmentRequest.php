@@ -14,7 +14,7 @@ class StoreDepartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unit_id' => ['required', 'exists:units,id'],
+            'unit_id' => ['nullable', 'exists:units,id'],
             'department_code' => ['required', 'string', 'max:20', 'unique:departments,department_code'],
             'department_name' => ['required', 'string', 'max:150'],
             'remarks' => ['nullable', 'string'],

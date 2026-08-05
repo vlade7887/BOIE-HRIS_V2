@@ -1,0 +1,7 @@
+@extends('layouts.adminlte')
+@section('title', 'Section Details')
+@section('page_title', 'Section Details')
+@section('breadcrumb')<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li><li class="breadcrumb-item"><a href="{{ route('sections.index') }}">Section</a></li><li class="breadcrumb-item active">View</li>@endsection
+@section('content')
+<div class="container-fluid"><div class="card"><div class="card-header d-flex justify-content-between align-items-center"><h3 class="card-title mb-0">{{ $section->section_name }}</h3><a href="{{ route('sections.edit', $section) }}" class="btn btn-warning btn-sm">Edit</a></div><div class="card-body"><div class="row g-3"><div class="col-md-6"><dl class="row mb-0"><dt class="col-sm-4">Code</dt><dd class="col-sm-8">{{ $section->section_code ?? '—' }}</dd><dt class="col-sm-4">Name</dt><dd class="col-sm-8">{{ $section->section_name ?? '—' }}</dd><dt class="col-sm-4">Status</dt><dd class="col-sm-8">{{ $section->is_active ? 'Active' : 'Inactive' }}</dd></dl></div><div class="col-md-6"><div class="border rounded p-3 h-100"><h6 class="text-muted mb-3">Remarks</h6><p class="mb-0">{{ $section->remarks ?? '—' }}</p></div></div></div></div></div></div>
+@endsection

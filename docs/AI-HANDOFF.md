@@ -48,6 +48,22 @@
 - Automated tests
 - Manual testing pending
 
+### Department Master Data
+- List
+- Search
+- Pagination
+- Create
+- View
+- Edit
+- Archive using soft delete
+- Archived listing
+- Restore
+- Optional Unit assignment
+- Active-employee dependency protection
+- Flash messages
+- Automated tests
+- Manual testing pending
+
 ### Unit Master Data
 - List
 - Search
@@ -58,6 +74,22 @@
 - Archive
 - Restore
 - Dependency protection
+- Flash messages
+- Automated tests
+- Manual testing pending: browser unavailable in verification environment
+
+### Section Master Data
+- List
+- Search
+- Pagination
+- Create
+- View
+- Edit
+- Archive using soft delete
+- Archived listing
+- Restore
+- Independent of Department in business logic
+- Active-employee dependency protection
 - Flash messages
 - Automated tests
 - Manual testing pending: browser unavailable in verification environment
@@ -113,8 +145,8 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 94 tests passed
-- Assertions: 341
+- Full suite: 114 tests passed
+- Assertions: 416
 
 ## Current Master Data Status
 
@@ -124,10 +156,10 @@ Completed:
 - Employee Class
 - Base
 - Unit
-
-Pending:
 - Department
 - Section
+
+Pending:
 - Position
 - Approval Workflow
 - Employee Documents workflow
@@ -138,18 +170,16 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-Implement Department using the completed Company module as the exact reference pattern.
+Implement Position using the completed Section module as the exact reference pattern.
 
 Then:
-1. Section
-2. Position
-3. Approval Workflow
-4. Employee Documents workflow
-5. Emergency Contact workflow
-6. Roles and Permissions
-7. Attendance
-8. Leave
-9. Payroll
+1. Approval Workflow
+2. Employee Documents workflow
+3. Emergency Contact workflow
+4. Roles and Permissions
+5. Attendance
+6. Leave
+7. Payroll
 
 ## Approved Organization Decisions
 

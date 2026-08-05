@@ -16,11 +16,17 @@ BOIE HRIS is being established around reliable organization and employee master 
 
 ## Next Priorities
 
-1. Implement Department, Section, and Position master data.
+1. Implement Position master data.
 2. Implement Approval Workflow.
 3. Complete Employee Documents and Emergency Contact workflows.
 4. Define and implement Roles and Permissions before broader HR operations.
 5. Implement Attendance, Leave, and Payroll.
+
+## Completed Since Last Roadmap Update
+
+- Section master data is complete: CRUD, search, pagination, soft-delete archive, restore, active-employee dependency protection, and feature tests.
+- Current verification: 114 tests passed, 416 assertions.
+- Next module: Position.
 
 ## Approved Implementation Order
 

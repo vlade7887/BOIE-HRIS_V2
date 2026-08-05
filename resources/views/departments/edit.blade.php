@@ -1,0 +1,16 @@
+@extends('layouts.adminlte')
+@section('title', 'Edit Department')
+@section('page_title', 'Edit Department')
+@section('breadcrumb')<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li><li class="breadcrumb-item"><a href="{{ route('departments.index') }}">Department</a></li><li class="breadcrumb-item active">Edit</li>@endsection
+@section('content')
+<div class="container-fluid"><div class="card"><div class="card-header"><h3 class="card-title">Edit Department</h3></div><div class="card-body">
+    @if ($errors->any())<div class="alert alert-danger"><strong>Please fix the following errors:</strong><ul class="mb-0 mt-2">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
+    <form action="{{ route('departments.update', $department) }}" method="POST">@csrf @method('PUT')<div class="row g-3">
+        <div class="col-md-6"><label for="department_code" class="form-label">Department Code</label><input type="text" class="form-control @error('department_code') is-invalid @enderror" id="department_code" name="department_code" value="{{ old('department_code', $department->department_code) }}" required>@error('department_code')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror</div>
+        <div class="col-md-6"><label for="department_name" class="form-label">Department Name</label><input type="text" class="form-control @error('department_name') is-invalid @enderror" id="department_name" name="department_name" value="{{ old('department_name', $department->department_name) }}" required>@error('department_name')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror</div>
+        <div class="col-md-6"><label for="unit_id" class="form-label">Unit <span class="text-muted">(Optional)</span></label><select class="form-select @error('unit_id') is-invalid @enderror" id="unit_id" name="unit_id"><option value="">No Unit</option>@foreach($units as $unit)<option value="{{ $unit->id }}" {{ old('unit_id', $department->unit_id) == $unit->id ? 'selected' : '' }}>{{ $unit->unit_name }}</option>@endforeach</select>@error('unit_id')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror</div>
+        <div class="col-md-6"><label for="is_active" class="form-label">Status</label><select class="form-select @error('is_active') is-invalid @enderror" id="is_active" name="is_active"><option value="1" {{ old('is_active', $department->is_active ? '1' : '0') == '1' ? 'selected' : '' }}>Active</option><option value="0" {{ old('is_active', $department->is_active ? '1' : '0') == '0' ? 'selected' : '' }}>Inactive</option></select>@error('is_active')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror</div>
+        <div class="col-md-12"><label for="remarks" class="form-label">Remarks</label><textarea class="form-control @error('remarks') is-invalid @enderror" id="remarks" name="remarks" rows="3">{{ old('remarks', $department->remarks) }}</textarea>@error('remarks')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror</div>
+    </div><div class="mt-4 d-flex gap-2"><button type="submit" class="btn btn-primary">Update Department</button><a href="{{ route('departments.show', $department) }}" class="btn btn-secondary">Cancel</a></div></form>
+</div></div></div>
+@endsection

@@ -38,7 +38,11 @@ Route::middleware('auth')->group(function () {
     Route::post('units/{unit}/archive', [UnitController::class, 'archive'])->name('units.archive');
     Route::post('units/{id}/restore', [UnitController::class, 'restore'])->name('units.restore');
     Route::resource('departments', DepartmentController::class);
+    Route::post('departments/{department}/archive', [DepartmentController::class, 'archive'])->name('departments.archive');
+    Route::post('departments/{id}/restore', [DepartmentController::class, 'restore'])->name('departments.restore');
     Route::resource('sections', SectionController::class);
+    Route::post('sections/{section}/archive', [SectionController::class, 'archive'])->name('sections.archive');
+    Route::post('sections/{id}/restore', [SectionController::class, 'restore'])->name('sections.restore');
     Route::resource('positions', PositionController::class);
     Route::resource('employment-statuses', EmploymentStatusController::class);
     Route::post('employment-statuses/{employmentStatus}/archive', [EmploymentStatusController::class, 'archive'])->name('employment-statuses.archive');

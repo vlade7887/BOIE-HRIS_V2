@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
+use App\Models\Employee;
 use App\Models\Section;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class SectionController extends Controller
 {
     public function index(): View
     {
-        $sections = Section::with('department')->latest()->get();
+        $search = request('search');
+        $view = request('view');
 
-        return view('sections.index', compact('sections'));
+        $query = Section::query();
+
+        if ($view === 'archived') {
+            $query->onlyTrashed();
+        } else {
+            $query->withoutTrashed();
+        }
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('section_code', 'like', "%{$search}%")
+                    ->orWhere('section_name', 'like', "%{$search}%");
+            });
+        }
+
+        $sections = $query->latest()->paginate(10);
+
+        return view('sections.index', compact('sections', 'search', 'view'));
     }
 
     public function create(): View
@@ -28,7 +48,7 @@ class SectionController extends Controller
     {
         Section::create($request->validated());
 
-        return redirect()->route('sections.index')->with('status', 'Section created successfully.');
+        return Redirect::route('sections.index')->with('success', 'Section created successfully.');
     }
 
     public function show(Section $section): View
@@ -45,13 +65,35 @@ class SectionController extends Controller
     {
         $section->update($request->validated());
 
-        return redirect()->route('sections.index')->with('status', 'Section updated successfully.');
+        return Redirect::route('sections.index')->with('success', 'Section updated successfully.');
     }
 
     public function destroy(Section $section): RedirectResponse
     {
+        return $this->archive($section);
+    }
+
+    public function archive(Section $section): RedirectResponse
+    {
+        $hasActiveDependencies = Employee::query()
+            ->where('section_id', $section->id)
+            ->where('is_active', true)
+            ->exists();
+
+        if ($hasActiveDependencies) {
+            return Redirect::back()->withErrors(['section' => 'Cannot archive this section because active employees still reference it.']);
+        }
+
         $section->delete();
 
-        return redirect()->route('sections.index')->with('status', 'Section archived successfully.');
+        return Redirect::route('sections.index')->with('success', 'Section archived successfully.');
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        $section = Section::withTrashed()->findOrFail($id);
+        $section->restore();
+
+        return Redirect::route('sections.index')->with('success', 'Section restored successfully.');
     }
 }
