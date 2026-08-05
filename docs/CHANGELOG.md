@@ -6,6 +6,15 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Unit Master Data
+
+- Completed Unit master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the Company and Base implementation patterns.
+- Kept Unit independent of Base in business logic and made the existing Base relationship optional.
+- Added soft-delete archive protection when active employees reference a Unit.
+- Added Unit feature tests and verified the full suite at 94 passing tests and 341 assertions.
+- Next implementation module: Department.
+- Manual browser smoke testing remains pending because no browser backend was available.
+
 ### Base Master Data
 
 - Completed Base master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the Company implementation pattern.

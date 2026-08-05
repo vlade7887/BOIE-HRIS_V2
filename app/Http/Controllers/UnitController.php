@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUnitRequest;
 use App\Http\Requests\UpdateUnitRequest;
+use App\Models\Employee;
 use App\Models\Unit;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class UnitController extends Controller
 {
     public function index(): View
     {
-        $units = Unit::with('base')->latest()->get();
+        $search = request('search');
+        $view = request('view');
 
-        return view('units.index', compact('units'));
+        $query = Unit::query();
+
+        if ($view === 'archived') {
+            $query->onlyTrashed();
+        } else {
+            $query->withoutTrashed();
+        }
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('unit_code', 'like', "%{$search}%")
+                    ->orWhere('unit_name', 'like', "%{$search}%");
+            });
+        }
+
+        $units = $query->latest()->paginate(10);
+
+        return view('units.index', compact('units', 'search', 'view'));
     }
 
     public function create(): View
@@ -28,7 +48,7 @@ class UnitController extends Controller
     {
         Unit::create($request->validated());
 
-        return redirect()->route('units.index')->with('status', 'Unit created successfully.');
+        return Redirect::route('units.index')->with('success', 'Unit created successfully.');
     }
 
     public function show(Unit $unit): View
@@ -45,13 +65,35 @@ class UnitController extends Controller
     {
         $unit->update($request->validated());
 
-        return redirect()->route('units.index')->with('status', 'Unit updated successfully.');
+        return Redirect::route('units.index')->with('success', 'Unit updated successfully.');
     }
 
     public function destroy(Unit $unit): RedirectResponse
     {
+        return $this->archive($unit);
+    }
+
+    public function archive(Unit $unit): RedirectResponse
+    {
+        $hasActiveDependencies = Employee::query()
+            ->where('unit_id', $unit->id)
+            ->where('is_active', true)
+            ->exists();
+
+        if ($hasActiveDependencies) {
+            return Redirect::back()->withErrors(['unit' => 'Cannot archive this unit because active employees still reference it.']);
+        }
+
         $unit->delete();
 
-        return redirect()->route('units.index')->with('status', 'Unit archived successfully.');
+        return Redirect::route('units.index')->with('success', 'Unit archived successfully.');
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        $unit = Unit::withTrashed()->findOrFail($id);
+        $unit->restore();
+
+        return Redirect::route('units.index')->with('success', 'Unit restored successfully.');
     }
 }

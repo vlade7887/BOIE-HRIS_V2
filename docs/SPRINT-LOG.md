@@ -2,6 +2,18 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-05 - Unit Master Data
+
+Status: Complete
+
+- Completed Unit master-data index, search, pagination, create, show, edit, archive, archived listing, and restore workflows using the Company and Base module patterns.
+- Kept Unit independent of Base in business logic and made the existing Base relationship optional for compatibility.
+- Added active-employee dependency protection for Unit archive operations with soft-delete-only behavior and flash/error feedback.
+- Added Unit feature coverage for authentication, CRUD, search, pagination, archive, restore, dependency protection, validation, and flash messages.
+- Verification: 94 tests passed, 341 assertions.
+- Next module: Department Master Data.
+- Manual browser smoke testing could not be completed because no browser backend was available.
+
 ## 2026-08-04 - Base Master Data
 
 Status: Complete

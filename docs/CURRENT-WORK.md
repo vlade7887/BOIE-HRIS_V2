@@ -12,7 +12,7 @@ Employee Module
 
 # Current Task
 
-Unit Master Data
+Department Master Data
 
 ---
 
@@ -32,6 +32,7 @@ Unit Master Data
 - Employment Status
 - Employee Class
 - Base Master Data
+- Unit Master Data
 - Employee CRUD
 - Employee Contact
 - Employee Address
@@ -41,7 +42,6 @@ Unit Master Data
 
 # Remaining Tasks
 
-- Unit
 - Department
 - Section
 - Position
@@ -60,7 +60,7 @@ Future enhancement only:
 
 # Current Objective
 
-Complete Unit Master Data, then continue the approved organization master-data sequence before starting Attendance.
+Complete Department Master Data, then continue the approved organization master-data sequence before starting Attendance.
 
 ---
 
@@ -72,9 +72,9 @@ main
 
 # Next Task
 
-Implement Unit Master Data using the completed Company Master Data module as the reference pattern.
+Implement Department Master Data using the completed Company Master Data module as the reference pattern.
 
-Approved roadmap order: Unit, Department, Section, Position, Approval Workflow, Employee Documents, Emergency Contacts, Roles and Permissions, Attendance, Leave, Payroll.
+Approved roadmap order: Department, Section, Position, Approval Workflow, Employee Documents, Emergency Contacts, Roles and Permissions, Attendance, Leave, Payroll.
 
 
 ---
@@ -112,4 +112,4 @@ Every AI must:
 
 # Last Updated
 
-2026-08-04
+2026-08-05

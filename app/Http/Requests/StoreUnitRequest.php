@@ -14,7 +14,6 @@ class StoreUnitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'base_id' => ['required', 'exists:bases,id'],
             'unit_code' => ['required', 'string', 'max:20', 'unique:units,unit_code'],
             'unit_name' => ['required', 'string', 'max:150'],
             'remarks' => ['nullable', 'string'],

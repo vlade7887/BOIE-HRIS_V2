@@ -16,13 +16,11 @@ BOIE HRIS is being established around reliable organization and employee master 
 
 ## Next Priorities
 
-1. Implement Base Master Data.
-2. Implement Unit, Department, Section, and Position master data.
-3. Implement cascading organization dropdowns in Employee Create/Edit.
-4. Implement Approval Workflow.
-5. Complete Employee Documents and Emergency Contact workflows.
-6. Define and implement Roles and Permissions before broader HR operations.
-7. Implement Attendance, Leave, and Payroll.
+1. Implement Department, Section, and Position master data.
+2. Implement Approval Workflow.
+3. Complete Employee Documents and Emergency Contact workflows.
+4. Define and implement Roles and Permissions before broader HR operations.
+5. Implement Attendance, Leave, and Payroll.
 
 ## Approved Implementation Order
 

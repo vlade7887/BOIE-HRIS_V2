@@ -48,6 +48,20 @@
 - Automated tests
 - Manual testing pending
 
+### Unit Master Data
+- List
+- Search
+- Pagination
+- Create
+- View
+- Edit
+- Archive
+- Restore
+- Dependency protection
+- Flash messages
+- Automated tests
+- Manual testing pending: browser unavailable in verification environment
+
 ### Company Master Data
 - List
 - Search
@@ -99,8 +113,8 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 83 tests passed
-- Assertions: 302
+- Full suite: 94 tests passed
+- Assertions: 341
 
 ## Current Master Data Status
 
@@ -109,9 +123,9 @@ Completed:
 - Employment Status
 - Employee Class
 - Base
+- Unit
 
 Pending:
-- Unit
 - Department
 - Section
 - Position
@@ -124,19 +138,18 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-Implement Unit using the completed Company module as the exact reference pattern.
+Implement Department using the completed Company module as the exact reference pattern.
 
 Then:
-1. Department
-2. Section
-3. Position
-4. Approval Workflow
-5. Employee Documents workflow
-6. Emergency Contact workflow
-7. Roles and Permissions
-8. Attendance
-9. Leave
-10. Payroll
+1. Section
+2. Position
+3. Approval Workflow
+4. Employee Documents workflow
+5. Emergency Contact workflow
+6. Roles and Permissions
+7. Attendance
+8. Leave
+9. Payroll
 
 ## Approved Organization Decisions
 
