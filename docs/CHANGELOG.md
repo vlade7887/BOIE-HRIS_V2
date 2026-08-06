@@ -6,6 +6,16 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Position Master Data
+
+- Completed Position master-data CRUD, search, pagination, archive, archived listing, and restore workflows.
+- Kept Position independent of Section and allowed Position creation without a Section.
+- Added unique Position code validation and soft-delete archive protection when active employees reference a Position.
+- Added Position feature tests; full verification is at 125 passing tests and 457 assertions.
+- Organization master-data foundation is complete. Next phase: Organization Cleanup.
+- Approved post-Position sequence: Organization Cleanup, Reusable Master Data UI Refactor, Blue and Green UI Refresh, Approval Workflow.
+- Manual browser smoke testing remains pending because no browser backend was available.
+
 ### Section Master Data
 
 - Completed Section master-data CRUD, search, pagination, archive, archived listing, and restore workflows following the established master-data patterns.

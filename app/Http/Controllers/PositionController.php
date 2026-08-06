@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Requests\UpdatePositionRequest;
+use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class PositionController extends Controller
 {
     public function index(): View
     {
-        $positions = Position::with('section')->latest()->get();
+        $search = request('search');
+        $view = request('view');
 
-        return view('positions.index', compact('positions'));
+        $query = Position::query();
+
+        if ($view === 'archived') {
+            $query->onlyTrashed();
+        } else {
+            $query->withoutTrashed();
+        }
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('position_code', 'like', "%{$search}%")
+                    ->orWhere('position_name', 'like', "%{$search}%");
+            });
+        }
+
+        $positions = $query->latest()->paginate(10);
+
+        return view('positions.index', compact('positions', 'search', 'view'));
     }
 
     public function create(): View
@@ -28,7 +48,7 @@ class PositionController extends Controller
     {
         Position::create($request->validated());
 
-        return redirect()->route('positions.index')->with('status', 'Position created successfully.');
+        return Redirect::route('positions.index')->with('success', 'Position created successfully.');
     }
 
     public function show(Position $position): View
@@ -45,13 +65,35 @@ class PositionController extends Controller
     {
         $position->update($request->validated());
 
-        return redirect()->route('positions.index')->with('status', 'Position updated successfully.');
+        return Redirect::route('positions.index')->with('success', 'Position updated successfully.');
     }
 
     public function destroy(Position $position): RedirectResponse
     {
+        return $this->archive($position);
+    }
+
+    public function archive(Position $position): RedirectResponse
+    {
+        $hasActiveDependencies = Employee::query()
+            ->where('position_id', $position->id)
+            ->where('is_active', true)
+            ->exists();
+
+        if ($hasActiveDependencies) {
+            return Redirect::back()->withErrors(['position' => 'Cannot archive this position because active employees still reference it.']);
+        }
+
         $position->delete();
 
-        return redirect()->route('positions.index')->with('status', 'Position archived successfully.');
+        return Redirect::route('positions.index')->with('success', 'Position archived successfully.');
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        $position = Position::withTrashed()->findOrFail($id);
+        $position->restore();
+
+        return Redirect::route('positions.index')->with('success', 'Position restored successfully.');
     }
 }

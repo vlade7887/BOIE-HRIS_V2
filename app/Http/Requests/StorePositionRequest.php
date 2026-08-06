@@ -14,7 +14,6 @@ class StorePositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'section_id' => ['required', 'exists:sections,id'],
             'position_code' => ['required', 'string', 'max:20', 'unique:positions,position_code'],
             'position_name' => ['required', 'string', 'max:150'],
             'remarks' => ['nullable', 'string'],

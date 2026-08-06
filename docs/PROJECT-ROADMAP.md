@@ -9,28 +9,32 @@ BOIE HRIS is being established around reliable organization and employee master 
 | Stage | Scope | Status |
 | --- | --- | --- |
 | Foundation | Laravel application, Breeze authentication, database-backed sessions and queues | Complete |
-| Organization master data | Company, base, unit, department, section, position, employment status, employee class | In progress |
+| Organization master data | Company, base, unit, department, section, position, employment status, employee class | Complete |
 | Employee master foundation | Employee profile and organization assignment | Complete |
 | Employee supporting data | Contact, address, government ID, emergency contact, document data structures and CRUD work | Planned |
 | HR operational modules | Attendance, leave, payroll, and related workflows | Planned |
 
 ## Next Priorities
 
-1. Implement Position master data.
-2. Implement Approval Workflow.
-3. Complete Employee Documents and Emergency Contact workflows.
-4. Define and implement Roles and Permissions before broader HR operations.
-5. Implement Attendance, Leave, and Payroll.
+1. Organization Cleanup.
+2. Reusable Master Data UI Refactor.
+3. Blue and Green UI Refresh.
+4. Implement Approval Workflow.
+5. Complete Employee Documents and Emergency Contact workflows.
+6. Define and implement Roles and Permissions before broader HR operations.
+7. Implement Attendance, Leave, and Payroll.
 
 ## Completed Since Last Roadmap Update
 
 - Section master data is complete: CRUD, search, pagination, soft-delete archive, restore, active-employee dependency protection, and feature tests.
-- Current verification: 114 tests passed, 416 assertions.
-- Next module: Position.
+- Position master data is complete: CRUD, search, pagination, soft-delete archive, restore, unique code validation, active-employee dependency protection, and feature tests.
+- Organization master-data foundation is complete.
+- Current verification: 125 tests passed, 457 assertions.
+- Next phase: Organization Cleanup.
 
 ## Approved Implementation Order
 
-Base → Unit → Department → Section → Position → Approval Workflow → Employee Documents → Emergency Contacts → Roles and Permissions → Attendance → Leave → Payroll
+Base → Unit → Department → Section → Position → Organization Cleanup → Reusable Master Data UI Refactor → Blue and Green UI Refresh → Approval Workflow → Employee Documents → Emergency Contacts → Roles and Permissions → Attendance → Leave → Payroll
 
 ## Approved Organization and Approval Decisions
 

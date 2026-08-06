@@ -136,6 +136,23 @@
 - Automated tests
 - Manual testing passed
 
+### Position Master Data
+- List
+- Search
+- Pagination
+- Create
+- View
+- Edit
+- Archive using soft delete
+- Archived listing
+- Restore
+- Independent of Section in business logic
+- Unique position code validation
+- Active-employee dependency protection
+- Flash messages
+- Automated tests
+- Manual testing pending: browser unavailable in verification environment
+
 ## Employee Class Values
 - Rank and File
 - Supervisory
@@ -145,8 +162,9 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 114 tests passed
-- Assertions: 416
+- Full suite: 125 tests passed
+- Assertions: 457
+- Manual browser smoke testing pending because no browser was available in the verification environment
 
 ## Current Master Data Status
 
@@ -158,9 +176,9 @@ Completed:
 - Unit
 - Department
 - Section
+- Position
 
 Pending:
-- Position
 - Approval Workflow
 - Employee Documents workflow
 - Emergency Contact workflow
@@ -170,16 +188,18 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-Implement Position using the completed Section module as the exact reference pattern.
+Organization Cleanup is the next phase after completing the organization master-data foundation.
 
 Then:
-1. Approval Workflow
-2. Employee Documents workflow
-3. Emergency Contact workflow
-4. Roles and Permissions
-5. Attendance
-6. Leave
-7. Payroll
+1. Reusable Master Data UI Refactor
+2. Blue and Green UI Refresh
+3. Approval Workflow
+4. Employee Documents workflow
+5. Emergency Contact workflow
+6. Roles and Permissions
+7. Attendance
+8. Leave
+9. Payroll
 
 ## Approved Organization Decisions
 
