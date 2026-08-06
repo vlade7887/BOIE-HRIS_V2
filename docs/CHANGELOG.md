@@ -6,6 +6,14 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Reusable Master Data UI Refactor
+
+- Extracted reusable Blade partials for common master-data validation, code/name fields, status, remarks, form actions, search toolbars, index tables, and archive/restore actions.
+- Simplified the eight completed Organization Master Data create, edit, and index view sets without changing business logic or visible UI intent.
+- Kept module-specific company contact/address and department unit fields local to their modules.
+- No controllers, validation, routes, database schema, archive behavior, or tests were changed.
+- Full verification: 127 tests passed and 486 assertions; next phase is Blue & Green UI Refresh.
+
 ### Organization Cleanup
 
 - Standardized Company, Base, Unit, Department, Section, Position, Employment Status, and Employee Class resources with archive-only routes.
