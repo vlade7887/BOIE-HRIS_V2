@@ -72,11 +72,6 @@ class DepartmentController extends Controller
         return Redirect::route('departments.index')->with('success', 'Department updated successfully.');
     }
 
-    public function destroy(Department $department): RedirectResponse
-    {
-        return $this->archive($department);
-    }
-
     public function archive(Department $department): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

@@ -68,11 +68,6 @@ class CompanyController extends Controller
         return Redirect::route('companies.index')->with('success', 'Company updated successfully.');
     }
 
-    public function destroy(Company $company): RedirectResponse
-    {
-        return $this->archive($company);
-    }
-
     public function archive(Company $company): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

@@ -2,6 +2,17 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-06 - Organization Cleanup
+
+Status: Complete
+
+- Standardized Company, Base, Unit, Department, Section, Position, Employment Status, and Employee Class resources with archive-only routes.
+- Removed redundant public `destroy` routes and duplicate controller methods while retaining dedicated archive and restore routes.
+- Preserved soft-delete-only archive behavior, dependency protection, validation, redirects, flash messages, search, pagination, archived views, and restore behavior.
+- Added feature coverage confirming the eight resources expose no `destroy` route and retain archive/restore routes.
+- Verification: 127 tests passed, 481 assertions; optimize:clear, route:list, view:cache, and git diff --check passed.
+- Next phase: Reusable Master Data UI Refactor.
+
 ## 2026-08-05 - Position Master Data
 
 Status: Complete

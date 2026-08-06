@@ -68,11 +68,6 @@ class EmploymentStatusController extends Controller
         return Redirect::route('employment-statuses.index')->with('success', 'Employment status updated successfully.');
     }
 
-    public function destroy(EmploymentStatus $employmentStatus): RedirectResponse
-    {
-        return $this->archive($employmentStatus);
-    }
-
     public function archive(EmploymentStatus $employmentStatus): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

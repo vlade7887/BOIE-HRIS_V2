@@ -72,7 +72,13 @@ class PositionTest extends TestCase
         $position = Position::create(['position_code' => 'POS-005', 'position_name' => 'Operations Staff']);
 
         $this->actingAs($user)->get(route('positions.show', $position))
-            ->assertOk()->assertSee('POS-005')->assertSee('Operations Staff');
+            ->assertOk()
+            ->assertSee('POS-005')
+            ->assertSee('Operations Staff')
+            ->assertSee('Edit')
+            ->assertSee('Back')
+            ->assertSee(route('positions.edit', $position))
+            ->assertSee(route('positions.index'));
     }
 
     public function test_position_index_can_search_by_code_or_name(): void

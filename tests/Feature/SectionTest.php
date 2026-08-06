@@ -62,7 +62,13 @@ class SectionTest extends TestCase
         $section = Section::create(['section_code' => 'SEC-004', 'section_name' => 'Operations']);
 
         $this->actingAs($user)->get(route('sections.show', $section))
-            ->assertOk()->assertSee('SEC-004')->assertSee('Operations');
+            ->assertOk()
+            ->assertSee('SEC-004')
+            ->assertSee('Operations')
+            ->assertSee('Edit')
+            ->assertSee('Back')
+            ->assertSee(route('sections.edit', $section))
+            ->assertSee(route('sections.index'));
     }
 
     public function test_section_index_can_search_by_code_or_name(): void

@@ -68,11 +68,6 @@ class UnitController extends Controller
         return Redirect::route('units.index')->with('success', 'Unit updated successfully.');
     }
 
-    public function destroy(Unit $unit): RedirectResponse
-    {
-        return $this->archive($unit);
-    }
-
     public function archive(Unit $unit): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

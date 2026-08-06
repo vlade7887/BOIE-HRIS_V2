@@ -68,11 +68,6 @@ class SectionController extends Controller
         return Redirect::route('sections.index')->with('success', 'Section updated successfully.');
     }
 
-    public function destroy(Section $section): RedirectResponse
-    {
-        return $this->archive($section);
-    }
-
     public function archive(Section $section): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

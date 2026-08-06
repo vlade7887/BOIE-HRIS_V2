@@ -16,21 +16,21 @@ BOIE HRIS is being established around reliable organization and employee master 
 
 ## Next Priorities
 
-1. Organization Cleanup.
-2. Reusable Master Data UI Refactor.
-3. Blue and Green UI Refresh.
-4. Implement Approval Workflow.
-5. Complete Employee Documents and Emergency Contact workflows.
-6. Define and implement Roles and Permissions before broader HR operations.
-7. Implement Attendance, Leave, and Payroll.
+1. Reusable Master Data UI Refactor.
+2. Blue and Green UI Refresh.
+3. Implement Approval Workflow.
+4. Complete Employee Documents and Emergency Contact workflows.
+5. Define and implement Roles and Permissions before broader HR operations.
+6. Implement Attendance, Leave, and Payroll.
 
 ## Completed Since Last Roadmap Update
 
 - Section master data is complete: CRUD, search, pagination, soft-delete archive, restore, active-employee dependency protection, and feature tests.
 - Position master data is complete: CRUD, search, pagination, soft-delete archive, restore, unique code validation, active-employee dependency protection, and feature tests.
 - Organization master-data foundation is complete.
-- Current verification: 125 tests passed, 457 assertions.
-- Next phase: Organization Cleanup.
+- Organization Cleanup is complete: the eight completed master-data resources now use archive-only routes, with redundant destroy endpoints removed and archive/restore routes retained.
+- Current verification: 127 tests passed, 481 assertions.
+- Next phase: Reusable Master Data UI Refactor.
 
 ## Approved Implementation Order
 

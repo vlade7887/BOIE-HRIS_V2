@@ -208,9 +208,11 @@ class CompanyTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($user)->post(route('companies.archive', $company));
+        $response = $this->actingAs($user)->from(route('companies.index'))->followingRedirects()
+            ->post(route('companies.archive', $company));
 
-        $response->assertSessionHasErrors(['company']);
+        $response
+            ->assertSee('Cannot archive this company because active employees still reference it.');
         $this->assertDatabaseHas('companies', ['id' => $company->id, 'deleted_at' => null]);
     }
 

@@ -199,9 +199,11 @@ class EmployeeClassTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($user)->post(route('employee-classes.archive', $employeeClass));
+        $response = $this->actingAs($user)->from(route('employee-classes.index'))->followingRedirects()
+            ->post(route('employee-classes.archive', $employeeClass));
 
-        $response->assertSessionHasErrors(['employeeClass']);
+        $response
+            ->assertSee('Cannot archive this employee class because active employees still reference it.');
         $this->assertDatabaseHas('employee_classes', ['id' => $employeeClass->id, 'deleted_at' => null]);
     }
 

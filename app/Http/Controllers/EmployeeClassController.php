@@ -68,11 +68,6 @@ class EmployeeClassController extends Controller
         return Redirect::route('employee-classes.index')->with('success', 'Employee class updated successfully.');
     }
 
-    public function destroy(EmployeeClass $employeeClass): RedirectResponse
-    {
-        return $this->archive($employeeClass);
-    }
-
     public function archive(EmployeeClass $employeeClass): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

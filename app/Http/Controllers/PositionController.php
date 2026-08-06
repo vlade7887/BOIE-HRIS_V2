@@ -68,11 +68,6 @@ class PositionController extends Controller
         return Redirect::route('positions.index')->with('success', 'Position updated successfully.');
     }
 
-    public function destroy(Position $position): RedirectResponse
-    {
-        return $this->archive($position);
-    }
-
     public function archive(Position $position): RedirectResponse
     {
         $hasActiveDependencies = Employee::query()

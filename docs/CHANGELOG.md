@@ -6,6 +6,14 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Organization Cleanup
+
+- Standardized Company, Base, Unit, Department, Section, Position, Employment Status, and Employee Class resources with archive-only routes.
+- Removed redundant resource `destroy` routes and duplicate controller methods; dedicated archive and restore routes remain in place.
+- Preserved soft-delete-only archiving, dependency protection, validation, redirects, flash messages, search, pagination, archived views, and restore behavior.
+- Added route regression coverage for absent `destroy` routes and retained archive/restore routes.
+- Full verification: 127 tests passed and 481 assertions; next phase is Reusable Master Data UI Refactor.
+
 ### Position Master Data
 
 - Completed Position master-data CRUD, search, pagination, archive, archived listing, and restore workflows.

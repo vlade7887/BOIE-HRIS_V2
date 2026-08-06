@@ -199,9 +199,11 @@ class EmploymentStatusTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($user)->post(route('employment-statuses.archive', $employmentStatus));
+        $response = $this->actingAs($user)->from(route('employment-statuses.index'))->followingRedirects()
+            ->post(route('employment-statuses.archive', $employmentStatus));
 
-        $response->assertSessionHasErrors(['employmentStatus']);
+        $response
+            ->assertSee('Cannot archive this employment status because active employees still reference it.');
         $this->assertDatabaseHas('employment_statuses', ['id' => $employmentStatus->id, 'deleted_at' => null]);
     }
 

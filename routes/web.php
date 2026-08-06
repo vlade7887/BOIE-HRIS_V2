@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('companies', CompanyController::class);
+    Route::resource('companies', CompanyController::class)->except(['destroy']);
     Route::post('companies/{company}/archive', [CompanyController::class, 'archive'])->name('companies.archive');
     Route::post('companies/{id}/restore', [CompanyController::class, 'restore'])->name('companies.restore');
     Route::resource('bases', BaseController::class)
@@ -34,22 +34,22 @@ Route::middleware('auth')->group(function () {
         ->parameters(['bases' => 'base']);
     Route::post('bases/{base}/archive', [BaseController::class, 'archive'])->name('bases.archive');
     Route::post('bases/{id}/restore', [BaseController::class, 'restore'])->name('bases.restore');
-    Route::resource('units', UnitController::class);
+    Route::resource('units', UnitController::class)->except(['destroy']);
     Route::post('units/{unit}/archive', [UnitController::class, 'archive'])->name('units.archive');
     Route::post('units/{id}/restore', [UnitController::class, 'restore'])->name('units.restore');
-    Route::resource('departments', DepartmentController::class);
+    Route::resource('departments', DepartmentController::class)->except(['destroy']);
     Route::post('departments/{department}/archive', [DepartmentController::class, 'archive'])->name('departments.archive');
     Route::post('departments/{id}/restore', [DepartmentController::class, 'restore'])->name('departments.restore');
-    Route::resource('sections', SectionController::class);
+    Route::resource('sections', SectionController::class)->except(['destroy']);
     Route::post('sections/{section}/archive', [SectionController::class, 'archive'])->name('sections.archive');
     Route::post('sections/{id}/restore', [SectionController::class, 'restore'])->name('sections.restore');
-    Route::resource('positions', PositionController::class);
+    Route::resource('positions', PositionController::class)->except(['destroy']);
     Route::post('positions/{position}/archive', [PositionController::class, 'archive'])->name('positions.archive');
     Route::post('positions/{id}/restore', [PositionController::class, 'restore'])->name('positions.restore');
-    Route::resource('employment-statuses', EmploymentStatusController::class);
+    Route::resource('employment-statuses', EmploymentStatusController::class)->except(['destroy']);
     Route::post('employment-statuses/{employmentStatus}/archive', [EmploymentStatusController::class, 'archive'])->name('employment-statuses.archive');
     Route::post('employment-statuses/{id}/restore', [EmploymentStatusController::class, 'restore'])->name('employment-statuses.restore');
-    Route::resource('employee-classes', EmployeeClassController::class);
+    Route::resource('employee-classes', EmployeeClassController::class)->except(['destroy']);
     Route::post('employee-classes/{employeeClass}/archive', [EmployeeClassController::class, 'archive'])->name('employee-classes.archive');
     Route::post('employee-classes/{id}/restore', [EmployeeClassController::class, 'restore'])->name('employee-classes.restore');
     Route::resource('employees', EmployeeController::class);
