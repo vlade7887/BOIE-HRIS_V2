@@ -7,8 +7,7 @@
 @endsection
 @section('content')
     <div class="container-fluid"><div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="card-title mb-0">Companies</h3>
+        <div class="card-header d-flex justify-content-end align-items-center">
             <a href="{{ route('companies.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>New Company</a>
         </div>
         <div class="card-body">

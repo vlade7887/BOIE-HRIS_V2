@@ -1,6 +1,7 @@
-<form method="GET" action="{{ route($routePrefix . '.index') }}" class="row g-2 mb-3">
+<form method="GET" action="{{ route($routePrefix . '.index') }}" class="row g-2 mb-4 align-items-end">
     <div class="col-md-6">
-        <input type="text" name="search" class="form-control" value="{{ $search ?? '' }}" placeholder="Search by code or name">
+        <label for="master-data-search" class="form-label">Search records</label>
+        <input id="master-data-search" type="text" name="search" class="form-control" value="{{ $search ?? '' }}" placeholder="Search by code or name">
     </div>
     <div class="col-md-2">
         <button type="submit" class="btn btn-outline-primary w-100">Search</button>

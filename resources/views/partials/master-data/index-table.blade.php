@@ -5,10 +5,10 @@
         <table class="table table-bordered table-hover mb-0">
             <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th class="text-end">Actions</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="text-end">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,7 +16,7 @@
                     <tr>
                         <td>{{ $record->{$codeField} }}</td>
                         <td>{{ $record->{$nameField} }}</td>
-                        <td>{{ $record->is_active ? 'Active' : 'Inactive' }}</td>
+                        <td><span class="badge {{ $record->trashed() ? 'badge-archived' : ($record->is_active ? 'badge-active' : 'badge-inactive') }}">{{ $record->trashed() ? 'Archived' : ($record->is_active ? 'Active' : 'Inactive') }}</span></td>
                         <td class="text-end">
                             @include('partials.master-data.row-actions', ['record' => $record, 'routePrefix' => $routePrefix, 'archiveLabel' => $archiveLabel])
                         </td>

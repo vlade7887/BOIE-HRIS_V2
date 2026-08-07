@@ -6,6 +6,14 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Blue & Green UI Refresh
+
+- Applied a clean blue-and-green visual theme to the global AdminLTE layout and the eight completed master-data modules.
+- Refreshed navigation, active states, page headers, cards, buttons, forms, tables, alerts, status badges, pagination, and responsive spacing through the shared stylesheet and reusable partials.
+- Preserved all existing business logic and left controllers, services, Form Requests, routes, database schema, authorization, validation, and archive/restore behavior unchanged.
+- Full verification: 127 tests passed and 486 assertions; optimize:clear, view:cache, and git diff --check passed.
+- Next phase: Approval Workflow.
+
 ### Reusable Master Data UI Refactor
 
 - Extracted reusable Blade partials for common master-data validation, code/name fields, status, remarks, form actions, search toolbars, index tables, and archive/restore actions.
