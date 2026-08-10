@@ -9,6 +9,10 @@ class Employee extends Model
 {
     use SoftDeletes;
 
+    protected $attributes = [
+        'can_approve_requests' => false,
+    ];
+
     protected $fillable = [
         'employee_no',
         'biometric_id',
@@ -41,6 +45,7 @@ class Employee extends Model
         'department_head_id',
         'remarks',
         'is_active',
+        'can_approve_requests',
     ];
 
     protected function casts(): array
@@ -52,12 +57,18 @@ class Employee extends Model
             'date_resigned' => 'date',
             'employment_end_date' => 'date',
             'is_active' => 'boolean',
+            'can_approve_requests' => 'boolean',
         ];
     }
 
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function base()

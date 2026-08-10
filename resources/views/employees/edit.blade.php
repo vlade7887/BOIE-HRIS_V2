@@ -75,6 +75,14 @@
                                     <div class="col-md-6"><label class="form-label">{{ $label }}</label><select name="{{ $field }}" class="form-select"><option value="">Select {{ strtolower($label) }}</option>@foreach($supervisors as $supervisor)<option value="{{ $supervisor->id }}" @selected((string) old($field, $employee->{$field}) === (string) $supervisor->id)>{{ trim($supervisor->last_name . ', ' . $supervisor->first_name) }}</option>@endforeach</select></div>
                                 @endforeach
                                 <div class="col-12"><label class="form-label">Remarks</label><textarea name="remarks" class="form-control" rows="4">{{ old('remarks', $employee->remarks) }}</textarea></div>
+                                <div class="col-12">
+                                    <input type="hidden" name="can_approve_requests" value="0">
+                                    <div class="form-check">
+                                        <input type="checkbox" name="can_approve_requests" id="can_approve_requests" value="1" class="form-check-input @error('can_approve_requests') is-invalid @enderror" @checked(old('can_approve_requests', $employee->can_approve_requests))>
+                                        <label for="can_approve_requests" class="form-check-label">Eligible to approve requests</label>
+                                    </div>
+                                    @error('can_approve_requests')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
+                                </div>
                             </div></div>
 
                             <div class="tab-pane fade" id="contact" role="tabpanel"><div class="row g-3">

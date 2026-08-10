@@ -6,19 +6,19 @@ Version: 1.0
 
 # Current Module
 
-Approval Workflow
+Approval Workflow Architecture Pivot
 
 ---
 
 # Current Task
 
-Begin Approval Workflow
+Approval Workflow Foundation implementation for the approved pivot
 
 ---
 
 # Status
 
-Next phase
+Approval Pivot Foundation implemented; manual QA passed; Approval Engine remains out of scope
 
 ---
 
@@ -41,12 +41,13 @@ Next phase
 - Employee Contact
 - Employee Address
 - Employee Government IDs
+- Approval Workflow Foundation: Employee-to-User mapping, eligible approvers, reusable workflow templates, scoped delegation, and append-only audit logging
 
 ---
 
 # Remaining Tasks
 
-- Approval Workflow
+- Implement Approval Engine runtime and immutable request snapshots
 - Employee Documents workflow
 - Emergency Contact workflow
 - Roles and Permissions
@@ -61,7 +62,7 @@ Future enhancement only:
 
 # Current Objective
 
-Blue & Green UI Refresh is complete for the global layout and completed master-data modules. Begin the reusable Approval Workflow next.
+Foundation implementation and final regression verification are complete. No Approval Engine, Leave, Notifications, or Dashboard code is authorized yet.
 
 ---
 
@@ -73,9 +74,9 @@ main
 
 # Next Task
 
-Begin Approval Workflow.
+Implement the Approval Engine runtime and immutable request snapshots after Foundation verification and approval.
 
-Approved post-Position sequence: Organization Cleanup, Reusable Master Data UI Refactor, Blue and Green UI Refresh, Approval Workflow.
+Approved post-Position sequence: Organization Cleanup, Reusable Master Data UI Refactor, Blue and Green UI Refresh, Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Documents, Emergency Contacts, Roles and Permissions, Attendance, Leave, Payroll.
 
 ---
 
@@ -93,11 +94,11 @@ Approved post-Position sequence: Organization Cleanup, Reusable Master Data UI R
 
 # Verification Status
 
-- Automated verification: 127 tests passed, 486 assertions; optimize:clear and view:cache passed.
-- Manual browser smoke testing: pending because no browser was available in the verification environment.
+- Automated verification: 143 tests passed, 560 assertions.
+- Manual QA: Approval Pivot Foundation flows passed, including eligibility, templates, activation protection, scoped delegation, mapping, unmap, and audit logging.
 
 ---
 
 # Last Updated
 
-2026-08-06
+2026-08-10

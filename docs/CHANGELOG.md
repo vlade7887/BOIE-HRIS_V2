@@ -6,6 +6,32 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Approval Workflow Foundation Pivot Implementation
+
+- Added forward migrations for employee approver eligibility, reusable workflow template rules, scoped delegation, and legacy assignment/step table preservation.
+- Renamed applied `workflow_assignments` and `workflow_steps` tables to `legacy_workflow_assignments` and `legacy_workflow_steps` without deleting their rows.
+- Removed active application usage, routes, models, services, requests, and views for fixed workflow assignments and fixed workflow steps.
+- Added Employee admin controls for `can_approve_requests`, template module/approver limits/HR-final configuration, scoped delegation validation, and foundation regression coverage.
+- Manual QA and final regression verification passed: 143 tests, 560 assertions.
+- Approval Engine runtime, request-time approver selection/snapshots, Leave, Notifications, and Dashboard integration remain future work.
+
+### Approval Architecture Pivot — Documentation and Planning
+
+- Approved request-time employee-selected ordered approvers with strict sequential approval and automatic, non-removable HR final approval.
+- Approved immutable submitted route snapshots, employee approver eligibility through `can_approve_requests`, and supervisor/department-head suggestions only.
+- Superseded the uncommitted fixed `workflow_assignments` and fixed `workflow_steps` approach before commit.
+- Defined reusable workflow/template rules, scoped delegation for All Approvals or Specific Department, and future runtime snapshot tables.
+- The documentation-only planning update was followed by the approved Foundation implementation.
+
+### Approval Workflow Foundation (Superseded Before Commit)
+
+- Added Employee-to-User one-to-one mapping with audited assignment and removal.
+- Added the original reusable Approval Workflow, Workflow Assignment, ordered Workflow Step, temporary Delegation, and append-only Audit Log foundations.
+- Enforced sequential step ordering, specific employee approvers, configurable HR steps, effective dates, delegation status values, and self-delegation protection through Form Requests and services.
+- This fixed-assignment implementation remains uncommitted and is superseded by the approved employee-selected route architecture.
+- Deliberately excluded the Approval Engine, Leave, Notifications, Dashboard integration, and Roles and Permissions enforcement.
+- Added authenticated Blade resource routes, AdminLTE views, service-layer transactions, and feature coverage.
+
 ### Blue & Green UI Refresh
 
 - Applied a clean blue-and-green visual theme to the global AdminLTE layout and the eight completed master-data modules.

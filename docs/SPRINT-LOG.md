@@ -2,6 +2,38 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-07 - Approval Architecture Pivot
+
+Status: Foundation implemented; manual QA passed; Approval Engine pending
+
+- Approved employee-selected ordered approvers at request submission time, strict sequential approval, automatic non-removable HR final approval, and immutable submitted route snapshots.
+- Removed the fixed Employee-to-Workflow assignment and fixed employee approver-chain approach from the approved architecture.
+- Retained reusable workflow/template rules, Employee-to-User mapping, scoped delegation, employee approver capability, and append-only audit logging as Foundation concerns.
+- Defined v1 delegation scopes as All Approvals or Specific Department; module-specific delegation remains future scope.
+- Foundation implementation completed for employee eligibility, reusable workflow templates, scoped delegation, mapping, and audit logging.
+
+## 2026-08-07 - Approval Workflow Foundation Pivot Implementation
+
+Status: Implemented; manual QA and regression verification passed
+
+- Added forward migrations for `can_approve_requests`, workflow template rules, delegation scopes, and safe legacy table renames.
+- Preserved applied rows by renaming `workflow_assignments` to `legacy_workflow_assignments` and `workflow_steps` to `legacy_workflow_steps`.
+- Removed active fixed-assignment and fixed-step application surfaces and routes.
+- Added template validation, eligible HR final approver configuration, All Approvals/Specific Department delegation, Employee admin eligibility UI, and pivot regression tests.
+- Approval Engine runtime, request-time snapshots, Leave, Notifications, and Dashboard integration remain excluded.
+- Final verification: 143 tests passed, 560 assertions.
+
+## 2026-08-07 - Superseded Approval Workflow Foundation (Uncommitted)
+
+Status: Superseded before commit
+
+- Added Employee-to-User mapping with one-to-one database protection.
+- Added the original fixed workflow definitions, dated employee assignments, ordered fixed steps, temporary employee delegation, and append-only audit logs.
+- Kept all writes in service-layer transactions and recorded configuration changes in the approval audit log.
+- Added Form Request validation for effective periods, sequential step order, specific employee approvers, delegation status, and self-delegation protection.
+- This implementation remains uncommitted and is superseded by the approved employee-selected route architecture.
+- No Approval Engine, Leave, Notifications, Dashboard integration, or Roles and Permissions enforcement was implemented.
+
 ## 2026-08-06 - Blue & Green UI Refresh
 
 Status: Complete

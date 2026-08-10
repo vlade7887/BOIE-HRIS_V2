@@ -1,0 +1,2 @@
+@extends('layouts.adminlte') @section('title', 'Create Approval Workflow') @section('page_title', 'Create Approval Workflow')
+@section('content')<div class="container-fluid"><div class="card"><div class="card-body"><form method="POST" action="{{ route('approval-workflows.store') }}">@csrf @include('approval-workflows._form')<div class="mt-3"><button class="btn btn-primary">Save Workflow</button> <a href="{{ route('approval-workflows.index') }}" class="btn btn-secondary">Cancel</a></div></form></div></div></div>@endsection

@@ -280,6 +280,16 @@ Always provide a completion summary.
 
 ---
 
+# Approval Architecture Rules
+
+The Approval Workflow Foundation retains Employee-to-User mapping, reusable workflow/template rules, employee approver eligibility, scoped temporary delegation, and append-only audit logging. It does not use fixed employee workflow assignments or fixed employee approver chains. Applied legacy assignment/step rows are preserved under legacy table names and are not active application features.
+
+In the future Approval Engine, employees will choose ordered approvers from active, non-archived employees with `can_approve_requests = true`. Employees will not select themselves or duplicates; Immediate Supervisor and Department Head will remain suggestions only. The Engine will append the configured HR final approver and snapshot the route into immutable sequential request steps.
+
+`is_hr_step` is only a marker on a specific employee approver step. HR is configurable, not a null or implicit approver. Delegation is evaluated at the active approval step and records the delegate acting for the canonical approver.
+
+The Approval Pivot Foundation is implemented and manual QA passed. Approval Engine runtime, request filing, request-time selection/review, immutable snapshots, runtime delegation, Notifications, Leave integration, and Roles and Permissions enforcement remain separate future phases. The previous fixed workflow-assignment Foundation is uncommitted and was superseded before commit.
+
 # 17. Business Rules
 
 This document will be continuously updated as BOIE HRIS grows.
@@ -292,7 +302,7 @@ Future business rules will include:
 - Overtime Rules
 - Holiday Rules
 - Late and Undertime Rules
-- Approval Workflows
+- Approval Engine behavior and request snapshots
 - Government Compliance
 - Company Policies
 

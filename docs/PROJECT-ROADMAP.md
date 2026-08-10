@@ -12,16 +12,23 @@ BOIE HRIS is being established around reliable organization and employee master 
 | Organization master data | Company, base, unit, department, section, position, employment status, employee class | Complete |
 | Employee master foundation | Employee profile and organization assignment | Complete |
 | Employee supporting data | Contact, address, government ID, emergency contact, document data structures and CRUD work | Planned |
+| Approval architecture | Employee-selected sequential routes, reusable workflow rules, scoped delegation, and immutable runtime snapshots | Foundation implemented; Engine planned |
 | HR operational modules | Attendance, leave, payroll, and related workflows | Planned |
 
 ## Next Priorities
 
-1. Implement Approval Workflow.
+1. Implement the Approval Engine Runtime / Request Snapshot Foundation.
 2. Complete Employee Documents and Emergency Contact workflows.
 3. Define and implement Roles and Permissions before broader HR operations.
 4. Implement Attendance, Leave, and Payroll.
 
 ## Completed Since Last Roadmap Update
+
+- The previous fixed-assignment Approval Workflow Foundation was superseded before commit; applied legacy assignment/step tables are retained under legacy names with rows preserved.
+- The Approval Workflow Foundation pivot implementation now covers Employee-to-User mapping, `can_approve_requests`, reusable workflow/template rules, scoped delegation, and append-only audit logs.
+- Approval Pivot Foundation is implemented and manual QA passed; final regression verification is 143 tests passed with 560 assertions.
+- The approved architecture keeps Employee-to-User mapping, reusable workflow/template rules, scoped delegation, and append-only audit logs; it removes fixed employee workflow assignments and fixed approver chains.
+- Request-time employee approver selection, route review, immutable snapshots, sequential runtime execution, runtime delegation resolution, Notifications, Leave integration, and Roles and Permissions enforcement remain unimplemented.
 
 - Reusable Master Data UI Refactor is complete: common Blade partials now cover validation summaries, standard form fields, search, index tables, and archive/restore actions across the eight completed master-data resources.
 - Current verification: 127 tests passed, 486 assertions.
@@ -41,7 +48,7 @@ BOIE HRIS is being established around reliable organization and employee master 
 
 ## Approved Implementation Order
 
-Base → Unit → Department → Section → Position → Organization Cleanup → Reusable Master Data UI Refactor → Blue and Green UI Refresh → Approval Workflow → Employee Documents → Emergency Contacts → Roles and Permissions → Attendance → Leave → Payroll
+Base → Unit → Department → Section → Position → Organization Cleanup → Reusable Master Data UI Refactor → Blue and Green UI Refresh → Approval Pivot Foundation → Approval Engine Runtime / Request Snapshot Foundation → Employee Documents → Emergency Contacts → Roles and Permissions → Attendance → Leave → Payroll
 
 ## Approved Organization and Approval Decisions
 
@@ -49,7 +56,17 @@ Base → Unit → Department → Section → Position → Organization Cleanup �
 - Department may be selected without a Unit and cannot be archived while assigned to active employees.
 - Section and Position remain separate assignment fields. Position codes are unique and names are descriptive.
 - Approval Workflow follows Position and precedes Employee Documents and Leave.
-- Approval Workflow supports multiple ordered employee approvers with approval levels/order, including two or more signatories, and is reusable by Leave and future approval-based modules. HR remains the final processing stage where applicable.
+- Employees choose ordered, unique, eligible approvers at request submission time. Approval is sequential, and HR final approval is automatically appended and cannot be removed.
+- Immediate Supervisor and Department Head remain informational fields used only as picker suggestions.
+- `can_approve_requests` controls employee-level approver eligibility. Employees must be active and non-archived; authenticated approval actions also require Employee-to-User mapping.
+- Approval Workflows are reusable module/template rules with approver limits and HR-final configuration, not fixed employee approver chains.
+- Submitted routes are immutable snapshots. Delegation is scoped for v1 to All Approvals or Specific Department; module-specific scope is future work.
+
+## Approval Architecture Boundaries
+
+- Foundation: Employee-to-User mapping, approver eligibility, reusable workflow/template configuration, scoped delegation, and append-only audit logging.
+- Approval Engine runtime: request-time approver selection, automatic HR-final appending, immutable request-step snapshots, sequential activation, delegation evaluation, and approval actions.
+- Future Leave integration: Leave request data and Leave-specific use of the reusable Approval Engine after the Engine is complete.
 
 ## Planned Functional Releases
 

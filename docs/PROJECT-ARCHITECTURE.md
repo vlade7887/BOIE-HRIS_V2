@@ -251,6 +251,30 @@ Documents
 
 Each module owns its own Models, Requests, Services, and Views.
 
+## Approval Architecture Boundary
+
+The approved architecture separates configuration Foundation work from runtime request processing and future Leave integration.
+
+### A. Approval Workflow Foundation
+
+- `Employee` maps optionally and one-to-one to `User`; authenticated approval actions require this mapping.
+- `Employee.can_approve_requests` controls whether an active, non-archived employee is eligible for the approver picker.
+- `ApprovalWorkflow` stores reusable module/template rules, not fixed employee approver chains. Its rules include `module_key`, minimum and maximum employee approvers, HR-final configuration, and draft/active/inactive/archived status.
+- Fixed workflow assignments and fixed workflow steps are removed from active application architecture. Because their migrations were already applied locally, their data is preserved in `legacy_workflow_assignments` and `legacy_workflow_steps`; no active models, services, requests, views, or routes use them.
+- Employee-selected ordered approvers, request-time route review, and immutable request-time snapshots belong to the future Approval Engine; they are not implemented in the Foundation.
+- `ApprovalDelegation` remains, with All Approvals or Specific Department scope for v1.
+- `ApprovalAuditLog` remains append-only and records actor, event, target, correlation, request metadata, and occurrence time.
+
+### B. Approval Engine Runtime
+
+At submission time, the requester selects ordered, unique, eligible employee approvers. The system validates the route, automatically appends the configured HR final approver, and snapshots the route into immutable request approval steps. Approval remains strictly sequential; only the active step can be acted upon. Delegation is evaluated when a step becomes active or is acted upon while the canonical approver remains unchanged.
+
+### C. Future Leave Integration
+
+Leave will later provide request data to the reusable Approval Engine. Leave-specific request rules, balances, notifications, and UI integration are outside this pivot.
+
+The previous fixed workflow-assignment implementation is uncommitted and was superseded before commit. The Approval Pivot Foundation is implemented and manual QA passed; runtime request processing remains unimplemented.
+
 ---
 
 # 8. Database Design Principles

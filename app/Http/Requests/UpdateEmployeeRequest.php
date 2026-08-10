@@ -48,6 +48,7 @@ class UpdateEmployeeRequest extends FormRequest
             'department_head_id' => ['nullable', 'exists:employees,id'],
             'remarks' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean'],
+            'can_approve_requests' => ['nullable', 'boolean'],
             'mobile_number' => ['nullable', 'string', 'max:20'],
             'alternate_mobile_number' => ['nullable', 'string', 'max:20'],
             'telephone_number' => ['nullable', 'string', 'max:20'],

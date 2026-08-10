@@ -169,8 +169,8 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 127 tests passed
-- Assertions: 486
+- Full suite: 142 tests passed
+- Assertions: 559
 - Manual browser smoke testing pending because no browser was available in the verification environment
 
 ## Current Master Data Status
@@ -185,8 +185,12 @@ Completed:
 - Section
 - Position
 
+Completed:
+- Approval Workflow Foundation pivot implementation: Employee-to-User mapping, eligible approvers, reusable workflow templates, scoped delegation, and append-only audit logging
+- Approval Pivot Foundation manual QA and final regression verification: 143 tests passed, 560 assertions
+
 Pending:
-- Approval Workflow
+- Approval Engine runtime
 - Employee Documents workflow
 - Emergency Contact workflow
 - Roles and Permissions
@@ -195,16 +199,18 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-Blue & Green UI Refresh is complete. Approval Workflow is the next phase.
+The Approval Workflow Foundation is implemented and manual QA passed. The next phase is Approval Engine Runtime / Request Snapshot Foundation.
 
 Then:
-1. Approval Workflow
+1. Approval Engine Runtime / Request Snapshot Foundation
 2. Employee Documents workflow
 3. Emergency Contact workflow
 4. Roles and Permissions
 5. Attendance
 6. Leave
 7. Payroll
+
+The Foundation does not yet implement employee request filing UI, employee-selected ordered approvers, request-time route review, immutable approval request snapshots, sequential runtime execution, runtime delegate resolution, Notifications, Leave integration, or Roles and Permissions enforcement.
 
 ## Approved Organization Decisions
 
@@ -216,12 +222,19 @@ Then:
 - Position codes must be unique; position names should be descriptive.
 - Cascading or filtered organization dropdowns are a future enhancement, outside the current scope.
 
-## Approved Approval Workflow
+## Approved Approval Architecture Pivot
 
-- Implement after Position and before Employee Documents and Leave.
-- Support multiple ordered approvers linked to employees, with approval levels/order for two, three, four, or more signatories.
-- Build it for reuse by Leave and future approval-based modules.
-- HR remains the final processing stage where applicable.
+- Employees choose ordered approvers at request submission time; employees do not receive fixed workflow assignments.
+- Approval is strictly sequential. Employees may add or remove approver rows before submission, cannot select themselves, and cannot select duplicate or ineligible approvers.
+- Eligible approvers are active, non-archived employees with `can_approve_requests = true`; the picker should prioritize supervisor, department head, and recently used eligible approvers without routing automatically through those fields.
+- HR final approval is automatically appended by the system and cannot be removed by the employee.
+- `immediate_supervisor_id` and `department_head_id` remain organizational/informational fields and may only provide suggestions.
+- Approval Workflows remain reusable module/template rules with `module_key`, approver limits, HR-final configuration, and active/inactive lifecycle; they do not store fixed employee approver chains.
+- Submitted request routes are snapshotted into immutable approval steps. Workflow/template changes and employee or organization changes must not rewrite submitted routes.
+- Delegation is scoped for v1 to All Approvals or Specific Department, with future module-specific scope reserved.
+- Audit history remains append-only, and Employee-to-User mapping remains required for authenticated approval actions.
+
+The previous fixed `workflow_assignments` and fixed employee approver-chain implementation is uncommitted and was superseded before commit. Applied legacy rows are preserved under legacy table names. See `docs/APPROVAL-ENGINE-DESIGN.md` for the Foundation/Engine boundary and runtime plan.
 
 ## Standard Master Data Behavior
 Each master-data module should follow the same pattern:
