@@ -2,9 +2,20 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-10 - Approval Engine Runtime / Request Snapshot Foundation
+
+Status: Backend implemented; regression verification passed
+
+- Added forward-only `approval_requests`, `approval_request_steps`, and append-only `approval_request_actions` runtime tables.
+- Added generic `Approvable` abstraction without Leave integration.
+- Implemented transactional submission with workflow cardinality checks, immutable route snapshots, HR final-step appending, and audit events.
+- Implemented strictly sequential approve/reject/cancel services with request/step row locking, runtime delegation precedence, actor metadata, and idempotency keys.
+- Employee filing UI, Leave, Notifications, Dashboard, and Roles and Permissions remain future work.
+- Full verification: 163 tests passed, 612 assertions.
+
 ## 2026-08-07 - Approval Architecture Pivot
 
-Status: Foundation implemented; manual QA passed; Approval Engine pending
+Status: Foundation implemented; manual QA passed; Approval Engine backend now implemented
 
 - Approved employee-selected ordered approvers at request submission time, strict sequential approval, automatic non-removable HR final approval, and immutable submitted route snapshots.
 - Removed the fixed Employee-to-Workflow assignment and fixed employee approver-chain approach from the approved architecture.

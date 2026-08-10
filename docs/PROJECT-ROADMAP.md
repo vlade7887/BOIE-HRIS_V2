@@ -12,23 +12,23 @@ BOIE HRIS is being established around reliable organization and employee master 
 | Organization master data | Company, base, unit, department, section, position, employment status, employee class | Complete |
 | Employee master foundation | Employee profile and organization assignment | Complete |
 | Employee supporting data | Contact, address, government ID, emergency contact, document data structures and CRUD work | Planned |
-| Approval architecture | Employee-selected sequential routes, reusable workflow rules, scoped delegation, and immutable runtime snapshots | Foundation implemented; Engine planned |
+| Approval architecture | Employee-selected sequential routes, reusable workflow rules, scoped delegation, and immutable runtime snapshots | Backend Foundation implemented; UI and Leave integration planned |
 | HR operational modules | Attendance, leave, payroll, and related workflows | Planned |
 
 ## Next Priorities
 
-1. Implement the Approval Engine Runtime / Request Snapshot Foundation.
-2. Complete Employee Documents and Emergency Contact workflows.
-3. Define and implement Roles and Permissions before broader HR operations.
-4. Implement Attendance, Leave, and Payroll.
+1. Complete Employee Documents and Emergency Contact workflows.
+2. Define and implement Roles and Permissions before broader HR operations.
+3. Implement Attendance, Leave, and Payroll.
 
 ## Completed Since Last Roadmap Update
 
 - The previous fixed-assignment Approval Workflow Foundation was superseded before commit; applied legacy assignment/step tables are retained under legacy names with rows preserved.
 - The Approval Workflow Foundation pivot implementation now covers Employee-to-User mapping, `can_approve_requests`, reusable workflow/template rules, scoped delegation, and append-only audit logs.
 - Approval Pivot Foundation is implemented and manual QA passed; final regression verification is 143 tests passed with 560 assertions.
+- Approval Engine Runtime / Request Snapshot Foundation backend is implemented; full regression verification is 163 tests passed with 612 assertions.
 - The approved architecture keeps Employee-to-User mapping, reusable workflow/template rules, scoped delegation, and append-only audit logs; it removes fixed employee workflow assignments and fixed approver chains.
-- Request-time employee approver selection, route review, immutable snapshots, sequential runtime execution, runtime delegation resolution, Notifications, Leave integration, and Roles and Permissions enforcement remain unimplemented.
+- Employee request filing UI, Notifications, Leave integration, and Roles and Permissions enforcement remain unimplemented.
 
 - Reusable Master Data UI Refactor is complete: common Blade partials now cover validation summaries, standard form fields, search, index tables, and archive/restore actions across the eight completed master-data resources.
 - Current verification: 127 tests passed, 486 assertions.

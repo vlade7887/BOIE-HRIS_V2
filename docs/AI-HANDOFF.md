@@ -188,9 +188,10 @@ Completed:
 Completed:
 - Approval Workflow Foundation pivot implementation: Employee-to-User mapping, eligible approvers, reusable workflow templates, scoped delegation, and append-only audit logging
 - Approval Pivot Foundation manual QA and final regression verification: 143 tests passed, 560 assertions
+- Approval Engine Runtime / Request Snapshot Foundation backend implementation: request snapshots, immutable ordered steps, append-only request actions, sequential approve/reject/cancel services, runtime delegation resolution, and idempotency handling
+- Approval Engine Runtime regression verification: 163 tests passed, 612 assertions
 
 Pending:
-- Approval Engine runtime
 - Employee Documents workflow
 - Emergency Contact workflow
 - Roles and Permissions
@@ -199,18 +200,17 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-The Approval Workflow Foundation is implemented and manual QA passed. The next phase is Approval Engine Runtime / Request Snapshot Foundation.
+The Approval Workflow Foundation and Approval Engine Runtime / Request Snapshot Foundation backend are implemented and regression-verified. Employee filing UI and Leave integration remain future phases.
 
 Then:
-1. Approval Engine Runtime / Request Snapshot Foundation
-2. Employee Documents workflow
-3. Emergency Contact workflow
-4. Roles and Permissions
-5. Attendance
-6. Leave
-7. Payroll
+1. Employee Documents workflow
+2. Emergency Contact workflow
+3. Roles and Permissions
+4. Attendance
+5. Leave
+6. Payroll
 
-The Foundation does not yet implement employee request filing UI, employee-selected ordered approvers, request-time route review, immutable approval request snapshots, sequential runtime execution, runtime delegate resolution, Notifications, Leave integration, or Roles and Permissions enforcement.
+The backend Runtime Foundation implements employee-selected ordered approver snapshots, request-time route persistence, immutable sequential runtime execution, runtime delegate resolution, approve/reject/cancel actions, append-only action history, and idempotency. Employee request filing UI, Notifications, Leave integration, and Roles and Permissions enforcement remain unimplemented.
 
 ## Approved Organization Decisions
 

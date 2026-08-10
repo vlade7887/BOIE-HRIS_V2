@@ -1,10 +1,10 @@
 # BOIE HRIS Approval Architecture and Migration Plan
 
-Status: Approval Pivot Foundation implemented; manual QA passed; Engine planning only
+Status: Approval Pivot Foundation and Approval Engine Runtime / Request Snapshot Foundation backend implemented; employee filing UI and Leave integration remain future work
 
 Date: 2026-08-07
 
-This document records the approved replacement for the uncommitted fixed workflow-assignment approach. The Foundation configuration portion is implemented and manually QA-verified. No Approval Engine runtime, request filing, request-time route review, immutable snapshot, Leave integration, Notifications, or Dashboard integration is implemented.
+This document records the approved replacement for the uncommitted fixed workflow-assignment approach. The Foundation configuration and Runtime request snapshot backend are implemented and regression-verified. Employee filing UI, Leave integration, Notifications, Dashboard integration, and Roles and Permissions remain future work.
 
 ## 1. Architecture Boundary
 
@@ -138,9 +138,9 @@ Retain the append-only structure using:
 
 There is no update or delete workflow for audit records.
 
-## 4. Proposed Future Runtime Snapshot Schema
+## 4. Implemented Runtime Snapshot Schema
 
-These tables belong to the future Approval Engine, not the current implemented Foundation phase.
+These tables are implemented by the Approval Engine Runtime / Request Snapshot Foundation. They remain generic and do not depend directly on Leave tables.
 
 ### `approval_requests`
 
@@ -229,7 +229,7 @@ Foundation tests should cover:
 - Append-only audit fields, actor mapping, correlation ID, request metadata, and occurrence time.
 - Absence of fixed assignment and fixed workflow-step routes.
 
-Future Engine tests should cover snapshot immutability, sequential activation, HR appending, delegation evaluation, canonical-versus-acting employee records, and resilience to later employee or organization changes.
+Runtime tests cover snapshot immutability, sequential activation, HR appending, delegation evaluation, canonical-versus-acting employee records, request cancellation/rejection, action idempotency, and resilience to later employee or organization changes.
 
 ## 8. Safe Implementation Order
 
@@ -237,7 +237,7 @@ Future Engine tests should cover snapshot immutability, sequential activation, H
 2. Preserve applied assignment/step rows through the safe forward legacy-table rename.
 3. Implement and verify reusable workflow/template rules, employee capability, and scoped delegation fields.
 4. Implement and verify Foundation services, requests, controllers, views, routes, and tests.
-5. Design and implement runtime snapshot tables and Engine services in a separate approved phase.
+5. Runtime snapshot tables and Engine services are implemented and verified; keep the Engine generic and separate from Leave.
 6. Add Leave integration only after the Engine is verified.
 7. Run migrations safely against the intended environment, never with `migrate:fresh`, then run the full verification suite.
 

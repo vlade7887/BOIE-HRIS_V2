@@ -62,7 +62,7 @@ Future enhancement only:
 
 # Current Objective
 
-Foundation implementation and final regression verification are complete. No Approval Engine, Leave, Notifications, or Dashboard code is authorized yet.
+Approval Workflow Foundation and Approval Engine Runtime / Request Snapshot Foundation backend implementation and regression verification are complete. Employee filing UI, Leave, Notifications, Dashboard, and Roles and Permissions remain future work.
 
 ---
 
@@ -74,7 +74,7 @@ main
 
 # Next Task
 
-Implement the Approval Engine runtime and immutable request snapshots after Foundation verification and approval.
+The Approval Engine runtime and immutable request snapshots are implemented and verified. The next task is Employee Documents and Emergency Contact workflows.
 
 Approved post-Position sequence: Organization Cleanup, Reusable Master Data UI Refactor, Blue and Green UI Refresh, Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Documents, Emergency Contacts, Roles and Permissions, Attendance, Leave, Payroll.
 
@@ -96,6 +96,9 @@ Approved post-Position sequence: Organization Cleanup, Reusable Master Data UI R
 
 - Automated verification: 143 tests passed, 560 assertions.
 - Manual QA: Approval Pivot Foundation flows passed, including eligibility, templates, activation protection, scoped delegation, mapping, unmap, and audit logging.
+- Runtime verification: 163 tests passed, 612 assertions.
+- Runtime backend implemented: request snapshots, sequential steps, runtime delegation, approve/reject/cancel actions, append-only action history, audit events, and idempotency handling.
+- Employee filing UI and Leave integration remain future work.
 
 ---
 
