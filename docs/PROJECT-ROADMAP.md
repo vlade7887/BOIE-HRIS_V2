@@ -17,7 +17,7 @@ BOIE HRIS is being established around reliable organization and employee master 
 
 ## Next Priorities
 
-1. Design the Actual Leave Module / Approval Engine integration.
+1. Implement the Actual Leave Module from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 2. Complete Employee Documents and Emergency Contact workflows.
 3. Define and implement Roles and Permissions before broader HR operations.
 4. Implement Attendance, Leave, and Payroll.
@@ -31,10 +31,10 @@ BOIE HRIS is being established around reliable organization and employee master 
 - Employee Request Filing / Approver Selection Foundation is implemented and regression-verified: authenticated requester mapping, eligible approver selection, ordered preview, HR-final append, real runtime submission, and read-only confirmation.
 - Approver Inbox / Approve-Reject-Cancel UI is implemented and regression-verified: current-step inbox, server-side detail authorization, delegation-aware actions, requester cancellation, and action history.
 - Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved; the tested request was approval_demo, not Leave.
-- Current final verification: 178 tests passed, 695 assertions; migrations are unchanged and all migrations are applied.
+- Current final verification: 178 tests passed, 700 assertions; migrations are unchanged and all migrations are applied.
 - The approved architecture keeps Employee-to-User mapping, reusable workflow/template rules, scoped delegation, and append-only audit logs; it removes fixed employee workflow assignments and fixed approver chains.
 - Employee Documents, Emergency Contacts, Roles and Permissions, Notifications, Leave integration, Attendance, and Payroll remain unimplemented.
-- Next phase: Actual Leave Module / Approval Engine integration design. Leave-specific request data and rules remain unimplemented.
+- Next phase: Actual Leave Module implementation from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`. Leave-specific request data and rules are documented but remain unimplemented.
 
 - Reusable Master Data UI Refactor is complete: common Blade partials now cover validation summaries, standard form fields, search, index tables, and archive/restore actions across the eight completed master-data resources.
 - Current verification: 127 tests passed, 486 assertions.

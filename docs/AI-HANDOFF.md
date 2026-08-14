@@ -170,7 +170,7 @@
 
 ## Current Test Status
 - Full suite: 178 tests passed
-- Assertions: 695
+- Assertions: 700
 - Filing-phase manual QA passed; broader browser smoke testing remains unavailable in the verification environment
 
 ## Current Master Data Status
@@ -192,7 +192,7 @@ Completed:
 - Approval Engine Runtime regression verification: 163 tests passed, 612 assertions
 - Employee Request Filing / Approver Selection Foundation: authenticated requester resolution, reusable eligible-approver picker, ordered route preview, HR-final append, real runtime submission, immutable snapshot confirmation, and missing-workflow handling
 - Employee Request Filing / Approver Selection Foundation final regression: 170 tests passed, 645 assertions
-- Approver Inbox / Approve-Reject-Cancel UI: current-step inbox, delegation-aware detail/actions, requester cancellation, action history, and server-side access control; 178 tests passed, 695 assertions
+- Approver Inbox / Approve-Reject-Cancel UI: current-step inbox, delegation-aware detail/actions, requester cancellation, action history, and server-side access control; 178 tests passed, 700 assertions
 
 Pending:
 - Employee Documents workflow
@@ -203,10 +203,10 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, and Approver Inbox / Approve-Reject-Cancel UI are implemented and regression-verified. The next phase is Actual Leave Module / Approval Engine integration design.
+The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, and Approver Inbox / Approve-Reject-Cancel UI are implemented and regression-verified. The next phase is Actual Leave Module implementation based on the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 
 Then:
-1. Actual Leave Module / Approval Engine integration design
+1. Actual Leave Module implementation based on approved Leave architecture
 2. Employee Documents workflow
 3. Emergency Contact workflow
 4. Roles and Permissions
@@ -214,7 +214,7 @@ Then:
 6. Leave
 7. Payroll
 
-The backend Runtime Foundation implements employee-selected ordered approver snapshots, request-time route persistence, immutable sequential runtime execution, runtime delegate resolution, approve/reject/cancel services, append-only action history, and idempotency. The filing phase provides the generic `/approval-demo` harness, and the completed inbox phase provides `/approval-inbox` and request action UI. Leave, Employee Documents, Roles and Permissions, Notifications, and Dashboard integration remain future work.
+The backend Runtime Foundation implements employee-selected ordered approver snapshots, request-time route persistence, immutable sequential runtime execution, runtime delegate resolution, approve/reject/cancel services, append-only action history, and idempotency. The filing phase provides the generic `/approval-demo` harness, and the completed inbox phase provides `/approval-inbox` and request action UI. Leave-specific implementation follows the approved design in `docs/LEAVE-MODULE-ARCHITECTURE.md`; Employee Documents, Roles and Permissions, Notifications, and Dashboard integration remain future work.
 
 Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved. The tested request was an `approval_demo` request, not an actual Leave request; Leave-specific request data and rules remain unimplemented.
 

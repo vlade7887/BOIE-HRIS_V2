@@ -177,13 +177,13 @@ Leave requests require approval workflow.
 
 Leave balances are maintained by the system.
 
-Supported leave types include:
+Approved initial configurable leave types include:
 
 - Vacation Leave
 - Sick Leave
-- Birthday Leave
+- Emergency Leave
 
-Future leave types may be added.
+Leave entitlement follows the employee's regularization anniversary, not the calendar year. The approved annual entitlements are 15 Vacation Leave days, 15 Sick Leave days, and 10 Emergency Leave days. Employees without `date_regularized` cannot receive automatic credit-based entitlement or file credit-based Leave. Detailed reservation, carryover, payout, calendar, overlap, and Approval Engine rules are documented in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 
 ---
 
@@ -272,7 +272,7 @@ Always provide a completion summary.
 
 ⬜ Attendance
 
-⬜ Leave
+⬜ Leave (architecture approved; implementation pending)
 
 ⬜ Payroll
 

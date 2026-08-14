@@ -41,7 +41,7 @@ Before making any code changes, read the documents in the following order:
 7. PROJECT-ROADMAP.md
 8. CHANGELOG.md
 9. SPRINT-LOG.md
-10. Current Module Specification
+10. Current Module Specification, including `docs/LEAVE-MODULE-ARCHITECTURE.md` for the approved Leave implementation architecture
 
 ---
 
@@ -81,15 +81,15 @@ docs/CURRENT-WORK.md
 
 Module specifications are located in:
 
-modules/
+docs/
 
 Examples:
 
 - Company-Specification.md
 - Employee-Specification.md
-- Attendance-Specification.md
-- Leave-Specification.md
-- Payroll-Specification.md
+- LEAVE-MODULE-ARCHITECTURE.md
+
+Attendance and Payroll specifications remain future documentation items; no `Leave-Specification.md` file is assumed.
 
 ---
 
