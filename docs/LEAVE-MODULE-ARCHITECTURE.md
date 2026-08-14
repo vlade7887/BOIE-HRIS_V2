@@ -1,10 +1,10 @@
 # BOIE HRIS Leave Module Architecture
 
-Status: Approved architecture; implementation not started
+Status: Approved architecture; Slice 1 implemented, later slices not started
 
 Date: 2026-08-14
 
-This document records the approved Leave policies and the proposed design for the first Leave implementation. It is a design document only. No Leave tables, models, services, routes, views, or tests are implemented by this document.
+This document records the approved Leave policies and the proposed design for the first Leave implementation. Leave Slice 1 now implements `leave_types`, `leave_entitlement_cycles`, `leave_entitlements`, Leave Type CRUD/seeding, and the regularization-anniversary entitlement service. The repository terminology remains `approvable_type`/`approvable_id`; Leave filing and Approval Engine integration are deferred.
 
 ## 1. Scope and architecture boundary
 

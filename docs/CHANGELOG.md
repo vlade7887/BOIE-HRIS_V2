@@ -214,3 +214,10 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 - `59671a0` — Initial BOIE HRIS foundation (Company, Base, Unit)
 - `a9d8f3f` — Complete organization structure and employee master tables
 - `a9074a4` — Complete Employee Sprint 1 - Employee master foundation
+# 2026-08-14 — Leave Slice 1
+
+- Added Leave Type configuration and VL/SL/EL development seed data.
+- Added regularization-anniversary entitlement cycles and granted-day snapshots.
+- Added Leave Type CRUD with soft-delete archive/restore and half-day precision validation.
+- Added idempotent, concurrency-safe entitlement cycle creation.
+- Leave filing, working calendar, reservations, Approval Engine integration, outcome mutation, rollover execution, and payroll payout processing remain pending.

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(EmployeeMasterDataSeeder::class);
+        $this->call(LeaveTypeSeeder::class);
 
         User::firstOrCreate(
             ['email' => 'test@example.com'],

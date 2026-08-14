@@ -247,3 +247,13 @@ Status: Complete
 
 - Added project architecture, roadmap, database standards, and sprint-log documentation.
 - Refreshed the development standards to reflect the current Laravel implementation.
+# 2026-08-14 — Leave Slice 1: Leave Types + Anniversary Entitlement Foundation
+
+Status: Complete
+
+- Added configurable Leave Type master data with idempotent VL, SL, and EL seed records.
+- Added soft-delete archive/restore CRUD with validation, search, pagination, and no hard-delete route.
+- Added regularization-anniversary entitlement cycles and per-type granted-day snapshots.
+- Added eligibility checks, cycle boundary handling, repeat-call idempotency, employee-row locking, and database uniqueness guards.
+- Deferred working calendar, Leave filing, reservations, Approval Engine integration, approval outcomes, rollover execution, and payroll payout processing.
+- Verification: 191 tests passed, 745 assertions; 167 routes registered and manual QA passed for the Slice 1 Leave Type and anniversary-entitlement flows.

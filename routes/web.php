@@ -17,6 +17,7 @@ use App\Http\Controllers\EmployeeEmergencyContactController;
 use App\Http\Controllers\EmployeeGovernmentIdController;
 use App\Http\Controllers\EmployeeUserMappingController;
 use App\Http\Controllers\EmploymentStatusController;
+use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
@@ -98,6 +99,12 @@ Route::middleware('auth')->group(function () {
         'employee-classes/{id}/restore',
         [EmployeeClassController::class, 'restore']
     )->name('employee-classes.restore');
+
+    Route::resource('leave-types', LeaveTypeController::class)->except(['destroy']);
+    Route::post('leave-types/{leaveType}/archive', [LeaveTypeController::class, 'archive'])
+        ->name('leave-types.archive');
+    Route::post('leave-types/{id}/restore', [LeaveTypeController::class, 'restore'])
+        ->name('leave-types.restore');
 
     /*
     |--------------------------------------------------------------------------
