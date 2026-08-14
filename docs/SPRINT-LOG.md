@@ -13,6 +13,16 @@ Status: Backend implemented; regression verification passed
 - Employee filing UI, Leave, Notifications, Dashboard, and Roles and Permissions remain future work.
 - Full verification: 163 tests passed, 612 assertions.
 
+## 2026-08-10 - Employee Request Filing / Approver Selection Foundation
+
+Status: Implemented; final regression verification passed; ready to commit
+
+- Added a reusable authenticated requester and approver-picker application layer with eligibility, search, suggestions, ordered selection, and workflow resolution.
+- Added the isolated generic Approval Demo filing, route preview, HR final append preview, real runtime submission, and read-only confirmation page.
+- Added focused filing coverage for access, mapping, picker exclusions, route preview, ordering, min/max, and idempotency.
+- Leave, Notifications, Roles & Permissions, Inbox UI, Approve/Reject UI, and Dashboard integration remain out of scope.
+- Final verification: 170 tests passed, 645 assertions; no migration added; all migrations already applied.
+
 ## 2026-08-07 - Approval Architecture Pivot
 
 Status: Foundation implemented; manual QA passed; Approval Engine backend now implemented

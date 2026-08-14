@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApprovalAuditLogController;
+use App\Http\Controllers\ApprovalDemoController;
 use App\Http\Controllers\ApprovalDelegationController;
 use App\Http\Controllers\ApprovalWorkflowController;
 use App\Http\Controllers\BaseController;
@@ -187,6 +188,17 @@ Route::middleware('auth')->group(function () {
         ->parameters([
             'approval-audit-logs' => 'approvalAuditLog',
         ]);
+
+    Route::get('approval-demo', [ApprovalDemoController::class, 'create'])
+        ->name('approval-demo.create');
+    Route::post('approval-demo/preview', [ApprovalDemoController::class, 'preview'])
+        ->name('approval-demo.preview');
+    Route::get('approval-demo/approvers/search', [ApprovalDemoController::class, 'search'])
+        ->name('approval-demo.approvers.search');
+    Route::post('approval-demo', [ApprovalDemoController::class, 'store'])
+        ->name('approval-demo.store');
+    Route::get('approval-demo/{approvalRequest}', [ApprovalDemoController::class, 'show'])
+        ->name('approval-demo.show');
 
     /*
     |--------------------------------------------------------------------------

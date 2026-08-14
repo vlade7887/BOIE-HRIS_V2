@@ -1,0 +1,11 @@
+@extends('layouts.adminlte')
+@section('title', 'Approval Request Confirmation')
+@section('page_title', 'Approval Request Submitted')
+@section('breadcrumb')<li class="breadcrumb-item active">Confirmation</li>@endsection
+@section('content')
+<div class="container-fluid"><div class="card card-success"><div class="card-header"><h3 class="card-title">Read-only request confirmation</h3></div><div class="card-body">
+    <dl class="row"><dt class="col-sm-3">Request identifier</dt><dd class="col-sm-9">#{{ $approvalRequest->id }}</dd><dt class="col-sm-3">Module</dt><dd class="col-sm-9">{{ $approvalRequest->module_key }}</dd><dt class="col-sm-3">Requester</dt><dd class="col-sm-9">{{ $approvalRequest->requester->first_name }} {{ $approvalRequest->requester->last_name }}</dd><dt class="col-sm-3">Status</dt><dd class="col-sm-9">{{ ucfirst($approvalRequest->status) }}</dd><dt class="col-sm-3">Workflow snapshot</dt><dd class="col-sm-9">{{ $approvalRequest->workflow_name }} · {{ $approvalRequest->workflow_code }} v{{ $approvalRequest->workflow_version }}</dd><dt class="col-sm-3">Request department snapshot</dt><dd class="col-sm-9">{{ $approvalRequest->requestDepartment?->department_name ?? 'None' }}</dd><dt class="col-sm-3">Submitted</dt><dd class="col-sm-9">{{ $approvalRequest->submitted_at?->format('Y-m-d H:i:s') }}</dd></dl>
+    <h5>Ordered approval route</h5><ol class="list-group list-group-numbered">@foreach($approvalRequest->steps->sortBy('step_order') as $step)<li class="list-group-item {{ $step->step_type === 'hr_final' ? 'list-group-item-warning' : '' }}"><strong>{{ $step->canonicalApprover->first_name }} {{ $step->canonicalApprover->last_name }}</strong><br><small>{{ $step->canonicalApprover->position?->position_name ?? 'No position' }} · {{ $step->step_type === 'hr_final' ? 'HR Final Approval' : 'Employee-selected approver' }} · {{ ucfirst($step->status) }}</small></li>@endforeach</ol>
+    <p class="mt-3 mb-0"><strong>Current pending approver:</strong> {{ $approvalRequest->steps->firstWhere('status', 'pending')?->canonicalApprover?->first_name }} {{ $approvalRequest->steps->firstWhere('status', 'pending')?->canonicalApprover?->last_name }}</p>
+</div></div></div>
+@endsection

@@ -169,9 +169,9 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 142 tests passed
-- Assertions: 559
-- Manual browser smoke testing pending because no browser was available in the verification environment
+- Full suite: 170 tests passed
+- Assertions: 645
+- Filing-phase manual QA passed; broader browser smoke testing remains unavailable in the verification environment
 
 ## Current Master Data Status
 
@@ -190,6 +190,8 @@ Completed:
 - Approval Pivot Foundation manual QA and final regression verification: 143 tests passed, 560 assertions
 - Approval Engine Runtime / Request Snapshot Foundation backend implementation: request snapshots, immutable ordered steps, append-only request actions, sequential approve/reject/cancel services, runtime delegation resolution, and idempotency handling
 - Approval Engine Runtime regression verification: 163 tests passed, 612 assertions
+- Employee Request Filing / Approver Selection Foundation: authenticated requester resolution, reusable eligible-approver picker, ordered route preview, HR-final append, real runtime submission, immutable snapshot confirmation, and missing-workflow handling
+- Employee Request Filing / Approver Selection Foundation final regression: 170 tests passed, 645 assertions
 
 Pending:
 - Employee Documents workflow
@@ -200,17 +202,18 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-The Approval Workflow Foundation and Approval Engine Runtime / Request Snapshot Foundation backend are implemented and regression-verified. Employee filing UI and Leave integration remain future phases.
+The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, and Employee Request Filing / Approver Selection Foundation are implemented and regression-verified. The next phase is Approver Inbox / Approve-Reject-Cancel UI.
 
 Then:
-1. Employee Documents workflow
-2. Emergency Contact workflow
-3. Roles and Permissions
-4. Attendance
-5. Leave
-6. Payroll
+1. Approver Inbox / Approve-Reject-Cancel UI
+2. Employee Documents workflow
+3. Emergency Contact workflow
+4. Roles and Permissions
+5. Attendance
+6. Leave
+7. Payroll
 
-The backend Runtime Foundation implements employee-selected ordered approver snapshots, request-time route persistence, immutable sequential runtime execution, runtime delegate resolution, approve/reject/cancel actions, append-only action history, and idempotency. Employee request filing UI, Notifications, Leave integration, and Roles and Permissions enforcement remain unimplemented.
+The backend Runtime Foundation implements employee-selected ordered approver snapshots, request-time route persistence, immutable sequential runtime execution, runtime delegate resolution, approve/reject/cancel services, append-only action history, and idempotency. The filing phase provides the generic `/approval-demo` harness and does not implement the Approver Inbox UI, Leave, Employee Documents, Roles and Permissions, Notifications, or Dashboard integration.
 
 ## Approved Organization Decisions
 

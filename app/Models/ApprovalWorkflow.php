@@ -16,6 +16,7 @@ class ApprovalWorkflow extends Model
     public const STATUS_ARCHIVED = 'archived';
 
     public const MODULE_KEYS = [
+        'approval_demo',
         'leave',
         'overtime',
         'official_business',

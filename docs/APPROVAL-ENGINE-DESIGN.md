@@ -1,10 +1,10 @@
 # BOIE HRIS Approval Architecture and Migration Plan
 
-Status: Approval Pivot Foundation and Approval Engine Runtime / Request Snapshot Foundation backend implemented; employee filing UI and Leave integration remain future work
+Status: Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, and Employee Request Filing / Approver Selection Foundation implemented; Approver Inbox UI and Leave integration remain future work
 
 Date: 2026-08-07
 
-This document records the approved replacement for the uncommitted fixed workflow-assignment approach. The Foundation configuration and Runtime request snapshot backend are implemented and regression-verified. Employee filing UI, Leave integration, Notifications, Dashboard integration, and Roles and Permissions remain future work.
+This document records the approved replacement for the uncommitted fixed workflow-assignment approach. The Foundation configuration, Runtime request snapshot backend, and generic employee filing/approver-selection harness are implemented and regression-verified. Approver Inbox UI, Leave integration, Notifications, Dashboard integration, Employee Documents, Emergency Contacts, and Roles and Permissions remain future work.
 
 ## 1. Architecture Boundary
 

@@ -6,6 +6,13 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Employee Request Filing / Approver Selection Foundation
+
+- Added authenticated requester resolution, reusable eligible approver search, supervisor/department-head suggestions, ordered route preview, and HR Final Approval preview.
+- Added isolated `/approval-demo` harness using the real `Approvable` and `ApprovalRequestSubmissionService`; Leave was not implemented.
+- Added read-only confirmation details, idempotent submission handling, focused filing tests, and AdminLTE navigation.
+- Final regression verification: 170 tests passed and 645 assertions; migrations unchanged and all migrations applied.
+
 ### Approval Workflow Foundation Pivot Implementation
 
 - Added forward migrations for employee approver eligibility, reusable workflow template rules, scoped delegation, and legacy assignment/step table preservation.
