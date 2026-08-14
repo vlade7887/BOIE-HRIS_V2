@@ -6,6 +6,15 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 
 ## Unreleased
 
+### Approver Inbox / Approve-Reject-Cancel UI
+
+- Added authenticated `/approval-inbox` work-item listing limited to the current pending approval step and valid direct/delegated actors.
+- Added read-only request detail with route snapshots, current approval context, action history, and requester cancellation.
+- Added approve/reject/cancel forms using the existing runtime action service, CSRF protection, Form Requests, idempotency keys, and delegation metadata preservation.
+- Added Approval Inbox navigation and focused feature coverage.
+- Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved; the tested request was approval_demo, not Leave.
+- Verification: 178 tests passed, 695 assertions; all migrations applied; 159 routes registered; view cache and `git diff --check` passed.
+
 ### Employee Request Filing / Approver Selection Foundation
 
 - Added authenticated requester resolution, reusable eligible approver search, supervisor/department-head suggestions, ordered route preview, and HR Final Approval preview.

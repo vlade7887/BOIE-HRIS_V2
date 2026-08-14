@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApprovalAuditLogController;
 use App\Http\Controllers\ApprovalDemoController;
 use App\Http\Controllers\ApprovalDelegationController;
+use App\Http\Controllers\ApprovalInboxController;
 use App\Http\Controllers\ApprovalWorkflowController;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\CompanyController;
@@ -199,6 +200,17 @@ Route::middleware('auth')->group(function () {
         ->name('approval-demo.store');
     Route::get('approval-demo/{approvalRequest}', [ApprovalDemoController::class, 'show'])
         ->name('approval-demo.show');
+
+    Route::get('approval-inbox', [ApprovalInboxController::class, 'index'])
+        ->name('approval-inbox.index');
+    Route::get('approval-inbox/{approvalRequest}', [ApprovalInboxController::class, 'show'])
+        ->name('approval-inbox.show');
+    Route::post('approval-inbox/{approvalRequest}/approve', [ApprovalInboxController::class, 'approve'])
+        ->name('approval-inbox.approve');
+    Route::post('approval-inbox/{approvalRequest}/reject', [ApprovalInboxController::class, 'reject'])
+        ->name('approval-inbox.reject');
+    Route::post('approval-requests/{approvalRequest}/cancel', [ApprovalInboxController::class, 'cancel'])
+        ->name('approval-requests.cancel');
 
     /*
     |--------------------------------------------------------------------------

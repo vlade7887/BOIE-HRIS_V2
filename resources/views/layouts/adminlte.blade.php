@@ -76,6 +76,7 @@
 
                         <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-calendar-alt"></i><p>Attendance</p></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-clipboard-list"></i><p>Leave</p></a></li>
+                        <li class="nav-item"><a href="{{ route('approval-inbox.index') }}" class="nav-link {{ request()->routeIs('approval-inbox.*') ? 'active' : '' }}"><i class="nav-icon fas fa-inbox"></i><p>Approval Inbox</p></a></li>
                         <li class="nav-item"><a href="{{ route('approval-demo.create') }}" class="nav-link {{ request()->routeIs('approval-demo.*') ? 'active' : '' }}"><i class="nav-icon fas fa-route"></i><p>Approval Demo</p></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-money-bill-wave"></i><p>Payroll</p></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-chart-bar"></i><p>Reports</p></a></li>

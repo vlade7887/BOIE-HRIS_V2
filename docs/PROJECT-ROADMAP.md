@@ -12,12 +12,12 @@ BOIE HRIS is being established around reliable organization and employee master 
 | Organization master data | Company, base, unit, department, section, position, employment status, employee class | Complete |
 | Employee master foundation | Employee profile and organization assignment | Complete |
 | Employee supporting data | Contact, address, government ID, emergency contact, document data structures and CRUD work | Planned |
-| Approval architecture | Employee-selected sequential routes, reusable workflow rules, scoped delegation, immutable runtime snapshots, and generic filing harness | Foundation and filing UI implemented; Approver Inbox UI and Leave integration planned |
+| Approval architecture | Employee-selected sequential routes, reusable workflow rules, scoped delegation, immutable runtime snapshots, generic filing harness, and approver inbox actions | Foundation, filing UI, and Approver Inbox UI implemented; Leave integration planned |
 | HR operational modules | Attendance, leave, payroll, and related workflows | Planned |
 
 ## Next Priorities
 
-1. Implement Approver Inbox / Approve-Reject-Cancel UI.
+1. Design the Actual Leave Module / Approval Engine integration.
 2. Complete Employee Documents and Emergency Contact workflows.
 3. Define and implement Roles and Permissions before broader HR operations.
 4. Implement Attendance, Leave, and Payroll.
@@ -29,9 +29,12 @@ BOIE HRIS is being established around reliable organization and employee master 
 - Approval Pivot Foundation is implemented and manual QA passed; final regression verification is 143 tests passed with 560 assertions.
 - Approval Engine Runtime / Request Snapshot Foundation backend is implemented; full regression verification is 163 tests passed with 612 assertions.
 - Employee Request Filing / Approver Selection Foundation is implemented and regression-verified: authenticated requester mapping, eligible approver selection, ordered preview, HR-final append, real runtime submission, and read-only confirmation.
-- Current final verification: 170 tests passed, 645 assertions; migrations are unchanged and all migrations are applied.
+- Approver Inbox / Approve-Reject-Cancel UI is implemented and regression-verified: current-step inbox, server-side detail authorization, delegation-aware actions, requester cancellation, and action history.
+- Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved; the tested request was approval_demo, not Leave.
+- Current final verification: 178 tests passed, 695 assertions; migrations are unchanged and all migrations are applied.
 - The approved architecture keeps Employee-to-User mapping, reusable workflow/template rules, scoped delegation, and append-only audit logs; it removes fixed employee workflow assignments and fixed approver chains.
-- Approver Inbox / Approve-Reject-Cancel UI, Employee Documents, Emergency Contacts, Roles and Permissions, Notifications, Leave integration, Attendance, and Payroll remain unimplemented.
+- Employee Documents, Emergency Contacts, Roles and Permissions, Notifications, Leave integration, Attendance, and Payroll remain unimplemented.
+- Next phase: Actual Leave Module / Approval Engine integration design. Leave-specific request data and rules remain unimplemented.
 
 - Reusable Master Data UI Refactor is complete: common Blade partials now cover validation summaries, standard form fields, search, index tables, and archive/restore actions across the eight completed master-data resources.
 - Current verification: 127 tests passed, 486 assertions.

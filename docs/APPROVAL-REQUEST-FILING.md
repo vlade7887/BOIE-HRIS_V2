@@ -14,7 +14,6 @@ This phase provides the reusable filing foundation without implementing Leave.
 
 ## Not yet done
 
-- Approver Inbox / Approve-Reject-Cancel UI.
 - Actual Leave request module.
 - Employee Documents and Emergency Contact workflows.
 - Notifications, Roles & Permissions, and Dashboard integration.

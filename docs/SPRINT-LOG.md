@@ -2,6 +2,17 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-14 - Approver Inbox / Approve-Reject-Cancel UI
+
+Status: Implemented; automated verification passed; ready for manual QA
+
+- Added authenticated `/approval-inbox` filtering to current pending steps only, with active Employee-to-User mapping and runtime delegation resolution.
+- Added server-controlled request detail access for requesters, current approvers/delegates, and previous actors, with read-only route and action history.
+- Added approve, reject, and requester-cancel forms that delegate business rules to `ApprovalRequestActionService`, including idempotency and delegation metadata.
+- Added delegation-aware AdminLTE UI, cancellation confirmation, sidebar navigation, and focused feature coverage.
+- Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved; the tested request was approval_demo, not Leave.
+- Full verification: 178 tests passed, 695 assertions; all migrations applied, 159 routes registered, view cache passed, and `git diff --check` passed.
+
 ## 2026-08-10 - Approval Engine Runtime / Request Snapshot Foundation
 
 Status: Backend implemented; regression verification passed
