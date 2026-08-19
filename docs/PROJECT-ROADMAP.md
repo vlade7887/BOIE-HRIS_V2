@@ -1,10 +1,14 @@
 # BOIE HRIS Project Roadmap
 
-## 2026-08-19 Leave Slice 2 Update
+## 2026-08-19 Leave Slice 3 Update
+
+Leave Slice 3 — Leave filing domain, validation, overlap checking, immutable draft day snapshots, balance availability, and reservation foundation is implemented. Draft/preview routes do not create `approval_requests` or expose a real Pending transition. The next priority is Slice 4 atomic Leave submission with the generic Approval Engine.
+
+## 2026-08-19 Leave Slice 2 Update (historical)
 
 Leave Slice 2 — Working Calendar + Leave Day Computation is implemented. Holiday dates are database-configured and no assumed annual holiday list was seeded. The next Leave slice is filing and balance reservation.
 
-## 2026-08-14 Leave Slice 1 Update
+## 2026-08-14 Leave Slice 1 Update (historical)
 
 Leave Slice 1 — Leave Types + Anniversary Entitlement Foundation and Leave Slice 2 — Working Calendar + Leave Day Computation are implemented. The next priority is Leave filing and balance reservation.
 
@@ -25,7 +29,7 @@ BOIE HRIS is being established around reliable organization and employee master 
 
 ## Next Priorities
 
-1. Implement Leave filing and balance reservation from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
+1. Implement atomic Leave filing and Approval Engine submission from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 2. Complete Employee Documents and Emergency Contact workflows.
 3. Define and implement Roles and Permissions before broader HR operations.
 4. Implement Attendance, Leave, and Payroll.
@@ -39,10 +43,10 @@ BOIE HRIS is being established around reliable organization and employee master 
 - Employee Request Filing / Approver Selection Foundation is implemented and regression-verified: authenticated requester mapping, eligible approver selection, ordered preview, HR-final append, real runtime submission, and read-only confirmation.
 - Approver Inbox / Approve-Reject-Cancel UI is implemented and regression-verified: current-step inbox, server-side detail authorization, delegation-aware actions, requester cancellation, and action history.
 - Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved; the tested request was approval_demo, not Leave.
-- Current final verification: 202 tests passed, 789 assertions; all migrations are applied and 175 routes are registered.
+- Current final verification: 217 tests passed, 846 assertions; all 46 migrations are applied and 179 routes are registered. Leave Slice 3 is implemented, while atomic Approval Engine submission remains pending.
 - The approved architecture keeps Employee-to-User mapping, reusable workflow/template rules, scoped delegation, and append-only audit logs; it removes fixed employee workflow assignments and fixed approver chains.
 - Employee Documents, Emergency Contacts, Roles and Permissions, Notifications, Leave integration, Attendance, and Payroll remain unimplemented.
-- Next phase: Leave filing and balance reservation from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
+- Next phase: atomic Leave filing and Approval Engine submission from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 
 - Reusable Master Data UI Refactor is complete: common Blade partials now cover validation summaries, standard form fields, search, index tables, and archive/restore actions across the eight completed master-data resources.
 - Current verification: 127 tests passed, 486 assertions.

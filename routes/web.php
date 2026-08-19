@@ -18,6 +18,7 @@ use App\Http\Controllers\EmployeeGovernmentIdController;
 use App\Http\Controllers\EmployeeUserMappingController;
 use App\Http\Controllers\EmploymentStatusController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
@@ -112,6 +113,14 @@ Route::middleware('auth')->group(function () {
         ->name('holidays.archive');
     Route::post('holidays/{id}/restore', [HolidayController::class, 'restore'])
         ->name('holidays.restore');
+
+    Route::get('leave-requests/create', [LeaveRequestController::class, 'create'])
+        ->name('leave-requests.create');
+    Route::get('leave-requests/preview', [LeaveRequestController::class, 'previewFallback']);
+    Route::post('leave-requests/preview', [LeaveRequestController::class, 'preview'])
+        ->name('leave-requests.preview');
+    Route::post('leave-requests/drafts', [LeaveRequestController::class, 'storeDraft'])
+        ->name('leave-requests.drafts.store');
 
     /*
     |--------------------------------------------------------------------------

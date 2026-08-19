@@ -1,14 +1,14 @@
 # BOIE HRIS Leave Module Architecture
 
-## Slice 2 implementation note — 2026-08-19
+## Slice 3 implementation note — 2026-08-19
 
-Leave Slice 2 is implemented. Working-calendar dates are interpreted explicitly in `Asia/Manila`; system timestamps and the application-wide UTC configuration remain unchanged. Philippine holidays are database-configured through the Holiday master data; no assumed annual holiday list is seeded. Future submitted Leave requests must snapshot the computed day result instead of recalculating history after Holiday master-data edits.
+Leave Slice 3 is implemented. Working-calendar dates are interpreted explicitly in `Asia/Manila`; system timestamps and the application-wide UTC configuration remain unchanged. Philippine holidays are database-configured through the Holiday master data; no assumed annual holiday list is seeded. Leave draft day rows persist the computed calendar result; future submitted Leave requests must retain those immutable snapshots instead of recalculating history after Holiday master-data edits.
 
-Status: Approved architecture; Slices 1–2 implemented, later slices not started
+Status: Approved architecture; Slices 1–3 implemented, Slice 4 atomic Approval Engine submission is next
 
 Date: 2026-08-14
 
-This document records the approved Leave policies and the proposed design for the first Leave implementation. Leave Slice 1 now implements `leave_types`, `leave_entitlement_cycles`, `leave_entitlements`, Leave Type CRUD/seeding, and the regularization-anniversary entitlement service. The repository terminology remains `approvable_type`/`approvable_id`; Leave filing and Approval Engine integration are deferred.
+This document records the approved Leave policies and implementation boundary. Slice 1 implements Leave types and anniversary entitlements, Slice 2 implements the working calendar, and Slice 3 implements the Leave filing/reservation foundation. The repository terminology remains `approvable_type`/`approvable_id`; atomic Leave filing with Approval Engine integration is deferred to Slice 4.
 
 ## 1. Scope and architecture boundary
 
@@ -97,7 +97,7 @@ Attachments are optional in v1. Leave types should be able to support future con
 
 ## 3. Proposed schema
 
-The proposal follows the repository's Laravel conventions: singular model names, plural snake_case tables, `*_id` foreign keys, timestamps, foreign keys, and soft deletes only where archive behavior is appropriate. Slice 1 and Slice 2 tables are implemented; future Leave request, day, reservation, ledger, and payout tables remain unimplemented.
+The proposal follows the repository's Laravel conventions: singular model names, plural snake_case tables, `*_id` foreign keys, timestamps, foreign keys, and soft deletes only where archive behavior is appropriate. Slice 3 implements Leave request, day, reservation, and ledger foundation tables; payout and rollover tables/processors remain future work.
 
 ### `leave_types`
 

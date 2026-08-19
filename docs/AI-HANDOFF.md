@@ -1,6 +1,13 @@
 # BOIE HRIS AI Handoff
 
-## 2026-08-19 Leave Slice 2 Update
+## 2026-08-19 Leave Slice 3 Update
+
+- Implemented Leave Slice 3 — Leave filing domain, configurable filing policy, validation, overlap checking, immutable draft day snapshots, available-balance calculation, and concurrency-safe reservation foundation.
+- Added VL old-before-new allocation during the configured three-month grace period, append-only grant/reservation ledger entries, and draft-only `/leave-requests` preview/save routes.
+- Final Leave submission, `approval_requests` creation, real Pending transition, Approval Engine callbacks, reservation release/consumption, rollover, and payroll remain deferred.
+- Current verification: 217 tests passed, 846 assertions; all 46 migrations applied, 179 routes registered, view cache passed, and `git diff --check` passed.
+
+## 2026-08-19 Leave Slice 2 Update (historical)
 
 - Implemented Leave Slice 2 — Working Calendar + Leave Day Computation.
 - Added configurable Holiday master data with soft-delete archive/restore, date uniqueness, search, pagination, and CRUD validation.
@@ -8,7 +15,7 @@
 - Leave filing, Leave request/day persistence, reservations, Approval Engine integration, outcome mutation, rollover, and payroll payout remain unimplemented.
 - Current verification: 202 tests passed, 789 assertions.
 
-## 2026-08-14 Leave Slice 1 Update
+## 2026-08-14 Leave Slice 1 Update (historical)
 
 - Implemented Leave Slice 1 — Leave Types + Anniversary Entitlement Foundation.
 - Added configurable Leave Type CRUD, soft-delete archive/restore, search, pagination, and idempotent VL/SL/EL seeding.
@@ -185,8 +192,8 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 202 tests passed
-- Assertions: 789
+- Full suite: 217 tests passed
+- Assertions: 846
 - Filing-phase manual QA passed; broader browser smoke testing remains unavailable in the verification environment
 
 ## Current Master Data Status
@@ -210,6 +217,7 @@ Completed:
 - Employee Request Filing / Approver Selection Foundation final regression: 170 tests passed, 645 assertions
 - Approver Inbox / Approve-Reject-Cancel UI: current-step inbox, delegation-aware detail/actions, requester cancellation, action history, and server-side access control; phase regression was 178 tests and 700 assertions
 - Leave Slice 2: database-configured Holiday master data and centralized Asia/Manila Working Calendar + Leave Day Computation
+- Leave Slice 3: Leave request/day domain foundation, filing-policy validation, overlap checking, draft snapshots, balance availability, deterministic reservations, and VL old-before-new allocation
 
 Pending:
 - Employee Documents workflow
@@ -220,10 +228,10 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, Leave Slice 1, and Leave Slice 2 are implemented and regression-verified. The next phase is Leave filing and balance reservation based on the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
+The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, and Leave Slices 1–3 are implemented and regression-verified. The next phase is atomic Leave filing with generic Approval Engine submission.
 
 Then:
-1. Leave filing and balance reservation
+1. Atomic Leave filing and Approval Engine submission
 2. Employee Documents workflow
 3. Emergency Contact workflow
 4. Roles and Permissions
@@ -233,7 +241,7 @@ Then:
 
 The backend Runtime Foundation implements employee-selected ordered approver snapshots, request-time route persistence, immutable sequential runtime execution, runtime delegate resolution, approve/reject/cancel services, append-only action history, and idempotency. The filing phase provides the generic `/approval-demo` harness, and the completed inbox phase provides `/approval-inbox` and request action UI. Leave-specific implementation follows the approved design in `docs/LEAVE-MODULE-ARCHITECTURE.md`; Employee Documents, Roles and Permissions, Notifications, and Dashboard integration remain future work.
 
-Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved. Leave Slice 1 manual QA also passed for VL/SL/EL seeding, Leave Type edit/archive/restore, Employee #1 anniversary cycle 2026-04-04 through 2027-04-03, 15/15/10 grants, zero initial reserved/consumed values, and repeated idempotent lookups. Leave filing, calendar computation, reservations, and approval integration remain unimplemented.
+Manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved. Leave Slice 1 manual QA also passed for VL/SL/EL seeding, Leave Type edit/archive/restore, Employee #1 anniversary cycle 2026-04-04 through 2027-04-03, 15/15/10 grants, zero initial reserved/consumed values, and repeated idempotent lookups. Slice 3 draft/preview and reservation foundations are automated-test verified; final Leave submission and Approval Engine integration remain unimplemented.
 
 ## Approved Organization Decisions
 

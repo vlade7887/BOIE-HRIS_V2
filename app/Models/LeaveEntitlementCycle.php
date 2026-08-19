@@ -35,4 +35,12 @@ class LeaveEntitlementCycle extends Model
     {
         return $this->hasMany(LeaveEntitlement::class);
     }
+
+    public function previousCycle(): ?self
+    {
+        return self::query()
+            ->where('employee_id', $this->employee_id)
+            ->whereDate('cycle_start_date', $this->cycle_start_date->subYear()->toDateString())
+            ->first();
+    }
 }

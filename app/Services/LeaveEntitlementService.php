@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Employee;
 use App\Models\LeaveEntitlementCycle;
+use App\Models\LeaveBalanceLedger;
 use App\Models\LeaveType;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\DB;
@@ -57,7 +58,7 @@ class LeaveEntitlementService
             $activeLeaveTypes = LeaveType::query()->where('is_active', true)->get();
 
             foreach ($activeLeaveTypes as $leaveType) {
-                $cycle->entitlements()->firstOrCreate(
+                $entitlement = $cycle->entitlements()->firstOrCreate(
                     ['leave_type_id' => $leaveType->id],
                     [
                         'granted_days' => $leaveType->annual_entitlement_days,
@@ -65,6 +66,19 @@ class LeaveEntitlementService
                         'consumed_days' => 0,
                         'expired_days' => 0,
                         'payout_days' => 0,
+                    ]
+                );
+
+                LeaveBalanceLedger::firstOrCreate(
+                    ['reference_key' => "grant:{$entitlement->id}"],
+                    [
+                        'employee_id' => $lockedEmployee->id,
+                        'leave_type_id' => $leaveType->id,
+                        'leave_entitlement_id' => $entitlement->id,
+                        'transaction_type' => 'grant',
+                        'units' => $entitlement->granted_days,
+                        'effective_date' => $cycle->cycle_start_date,
+                        'metadata' => ['source' => 'anniversary_entitlement'],
                     ]
                 );
             }

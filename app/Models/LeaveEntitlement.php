@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class LeaveEntitlement extends Model
 {
@@ -36,6 +37,16 @@ class LeaveEntitlement extends Model
     public function leaveType(): BelongsTo
     {
         return $this->belongsTo(LeaveType::class)->withTrashed();
+    }
+
+    public function reservations(): HasMany
+    {
+        return $this->hasMany(LeaveBalanceReservation::class);
+    }
+
+    public function ledgerEntries(): HasMany
+    {
+        return $this->hasMany(LeaveBalanceLedger::class);
     }
 
     public function getAvailableDaysAttribute(): string

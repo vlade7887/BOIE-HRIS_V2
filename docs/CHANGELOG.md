@@ -4,6 +4,14 @@ All notable BOIE HRIS project changes are documented in this file.
 
 The project follows a chronological, phase-and-sprint-based changelog while release versioning is not yet established.
 
+### Leave Slice 3 — Filing Domain and Reservation Foundation
+
+- Added configurable Leave filing timing and minimum advance-day policy fields, plus minimal carryover policy/grace configuration for old-before-new VL allocation.
+- Added `leave_requests`, `leave_request_days`, `leave_balance_reservations`, and append-only `leave_balance_ledger` foundations.
+- Added draft/preview-only Leave routes, authenticated requester mapping, filing validation, calendar snapshots, overlap checks, available-balance calculation, deterministic reservation locking, idempotency, and atomic insufficient-balance blocking.
+- Final Leave submission, `approval_requests` creation, real Pending transition, and Approval Engine outcome callbacks remain deferred to later slices.
+- Verification: 217 tests passed and 846 assertions; all 46 migrations applied and 179 routes registered.
+
 ## Unreleased
 
 ### Approver Inbox / Approve-Reject-Cancel UI

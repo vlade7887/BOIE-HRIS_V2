@@ -2,6 +2,16 @@
 
 This log records delivered development increments and the current implementation frontier. Dates reflect repository migration and commit history.
 
+## 2026-08-19 - Leave Slice 3 — Filing Domain and Reservation Foundation
+
+Status: Implemented; automated verification passed; final Approval submission deferred to Slice 4
+
+- Added configurable `filing_timing`, `minimum_advance_days`, `carryover_policy`, and `carryover_grace_days` Leave Type policy fields with idempotent VL/SL/EL seeding.
+- Added Leave request and immutable calendar-day snapshot models/tables with draft-only preview/save routes; no `approval_requests` are created by Slice 3.
+- Added filing eligibility/timing validation, overlap checker, available-balance service, append-only grant/reservation ledger, transactional deterministic reservation, idempotency protection, and VL old-before-new allocation.
+- Deferred atomic final submission/real Pending transition to Slice 4; approval outcome consume/release remains Slice 5.
+- Verification: 217 tests passed, 846 assertions; all 46 migrations applied and 179 routes registered.
+
 ## 2026-08-14 - Approver Inbox / Approve-Reject-Cancel UI
 
 Status: Implemented; automated verification passed; ready for manual QA

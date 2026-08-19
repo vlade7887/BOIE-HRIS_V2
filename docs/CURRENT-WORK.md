@@ -1,6 +1,13 @@
 # BOIE HRIS - Current Work
 
-## 2026-08-19 Leave Slice 2 Update
+## 2026-08-19 Leave Slice 3 Update
+
+- Leave Slice 3 is complete: Leave request/day domain foundation, configurable VL/SL/EL filing timing, validation, overlap rules, draft snapshot persistence, available-balance calculation, VL old-before-new allocation, and reservation/ledger foundation.
+- Draft/preview UI is available, but it cannot create `approval_requests` or transition a user-visible request to Pending.
+- Verification baseline: 217 tests passed, 846 assertions.
+- Next: Slice 4 atomic Leave submission with generic Approval Engine integration.
+
+## 2026-08-19 Leave Slice 2 Update (historical)
 
 - Leave Slice 2 is complete: Holiday master data and centralized Working Calendar + Leave Day Computation.
 - Business-calendar dates use explicit `Asia/Manila`; application-wide UTC configuration was unchanged.
@@ -8,7 +15,7 @@
 - Verification baseline: 202 tests passed, 789 assertions.
 - Next: Leave filing and balance reservation; Leave request/day persistence remains unimplemented.
 
-## 2026-08-14 Leave Slice 1 Update
+## 2026-08-14 Leave Slice 1 Update (historical)
 
 - Leave Slice 1 is complete: Leave Types, idempotent VL/SL/EL seeding, regularization-anniversary cycles, entitlement snapshots, and CRUD/archive/restore.
 - Next slice: Working Calendar and day computation.
@@ -21,19 +28,19 @@ Version: 1.0
 
 # Current Module
 
-Leave Slice 2 final audit; next task is Leave filing and balance reservation
+Leave Slice 3 final audit; next task is atomic Leave submission with Approval Engine integration
 
 ---
 
 # Current Task
 
-Complete Slice 1 audit and documentation synchronization; next implementation slice is Working Calendar and day computation.
+Complete Slice 3 audit and documentation synchronization; final Approval submission remains deferred to Slice 4.
 
 ---
 
 # Status
 
-Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, and Leave Slice 1 implemented; later Leave slices remain pending.
+Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, and Leave Slices 1–3 implemented; atomic Leave/Approval submission and later Leave slices remain pending.
 
 ---
 
@@ -82,7 +89,7 @@ Future enhancement only:
 
 # Current Objective
 
-Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, Leave Slice 1, and Leave Slice 2 are complete. The next phase is Leave filing and balance reservation from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
+Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, and Leave Slices 1–3 are complete. The next phase is atomic Leave filing with generic Approval Engine submission from the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 
 ---
 
@@ -94,9 +101,9 @@ main
 
 # Next Task
 
-Implement Leave filing and balance reservation.
+Implement atomic Leave filing plus generic Approval Engine submission, including the real Pending transition.
 
-Approved current sequence: Leave Slice 1, Leave Slice 2, Leave filing and balance reservation, Approval Engine integration, approval outcomes and balance mutation, anniversary rollover, then remaining operational modules.
+Approved current sequence: Leave Slice 1, Leave Slice 2, Leave Slice 3 filing/reservation foundation, Slice 4 atomic Approval Engine submission, Slice 5 approval outcomes and balance mutation, anniversary rollover, then remaining operational modules.
 
 ---
 
@@ -114,17 +121,17 @@ Approved current sequence: Leave Slice 1, Leave Slice 2, Leave filing and balanc
 
 # Verification Status
 
-- Final automated verification: 202 tests passed, 789 assertions.
+- Final automated verification: 217 tests passed, 846 assertions.
 - Manual QA: Approval Pivot Foundation flows passed, including eligibility, templates, activation protection, scoped delegation, mapping, unmap, and audit logging.
 - Filing-phase manual QA passed for requester mapping, workflow availability, eligible search, suggestions, ordering, preview, HR-final append, submission, immutable snapshots, and initial request state.
 - Approver Inbox manual QA passed for sequential approval: Michelle -> Marielle -> Ronna HR -> Approved; the tested request was approval_demo, not Leave.
 - Runtime verification: 163 tests passed, 612 assertions.
 - Runtime backend implemented: request snapshots, sequential steps, runtime delegation, approve/reject/cancel actions, append-only action history, audit events, and idempotency handling.
 - Employee Request Filing / Approver Selection Foundation is implemented and regression-verified, with the generic filing/route preview harness available at `/approval-demo`.
-- Leave Slice 1 is implemented. Working calendar, Leave filing, reservations, Approval Engine integration, outcomes, rollover execution, Employee Documents, Emergency Contacts, Roles & Permissions, Notifications, Dashboard, Attendance, and Payroll remain future work.
+- Leave Slices 1–3 are implemented. Atomic Leave/Approval submission, approval outcomes, rollover execution, Employee Documents, Emergency Contacts, Roles & Permissions, Notifications, Dashboard, Attendance, and Payroll remain future work.
 
 ---
 
 # Last Updated
 
-2026-08-14
+2026-08-19
