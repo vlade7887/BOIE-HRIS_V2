@@ -148,8 +148,8 @@ These tables are implemented by the Approval Engine Runtime / Request Snapshot F
 
 - `id`
 - `requester_employee_id` foreign key
-- `requestable_type` varchar(150)
-- `requestable_id` unsigned big integer
+- `approvable_type` varchar(150)
+- `approvable_id` unsigned big integer
 - `module_key` varchar(50)
 - `approval_workflow_id` nullable foreign key for provenance only
 - `workflow_code` varchar(50) snapshot

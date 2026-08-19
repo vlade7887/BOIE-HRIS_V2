@@ -221,3 +221,8 @@ The project follows a chronological, phase-and-sprint-based changelog while rele
 - Added Leave Type CRUD with soft-delete archive/restore and half-day precision validation.
 - Added idempotent, concurrency-safe entitlement cycle creation.
 - Leave filing, working calendar, reservations, Approval Engine integration, outcome mutation, rollover execution, and payroll payout processing remain pending.
+# 2026-08-19 — Leave Slice 2
+
+- Added Holiday master-data CRUD with database-configured Philippine holiday records, soft-delete archive/restore, and date uniqueness.
+- Added centralized Working Calendar + Leave Day Computation with explicit `Asia/Manila` date handling, weekends, active holidays, inclusive ranges, and 1.0/0.5 AM-PM units.
+- Deferred Leave filing, request/day persistence, reservations, Approval Engine integration, outcome mutation, rollover, and SL payroll payout.

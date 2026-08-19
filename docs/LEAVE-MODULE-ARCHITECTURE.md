@@ -1,6 +1,10 @@
 # BOIE HRIS Leave Module Architecture
 
-Status: Approved architecture; Slice 1 implemented, later slices not started
+## Slice 2 implementation note — 2026-08-19
+
+Leave Slice 2 is implemented. Working-calendar dates are interpreted explicitly in `Asia/Manila`; system timestamps and the application-wide UTC configuration remain unchanged. Philippine holidays are database-configured through the Holiday master data; no assumed annual holiday list is seeded. Future submitted Leave requests must snapshot the computed day result instead of recalculating history after Holiday master-data edits.
+
+Status: Approved architecture; Slices 1–2 implemented, later slices not started
 
 Date: 2026-08-14
 
@@ -93,7 +97,7 @@ Attachments are optional in v1. Leave types should be able to support future con
 
 ## 3. Proposed schema
 
-The proposal follows the repository's Laravel conventions: singular model names, plural snake_case tables, `*_id` foreign keys, timestamps, foreign keys, and soft deletes only where archive behavior is appropriate. These tables must not be created until implementation is approved.
+The proposal follows the repository's Laravel conventions: singular model names, plural snake_case tables, `*_id` foreign keys, timestamps, foreign keys, and soft deletes only where archive behavior is appropriate. Slice 1 and Slice 2 tables are implemented; future Leave request, day, reservation, ledger, and payout tables remain unimplemented.
 
 ### `leave_types`
 
@@ -170,7 +174,7 @@ Immutable fields: cycle identity and leave-type snapshots remain fixed. Mutable 
 
 ### `leave_requests`
 
-This is the Leave requestable record consumed by the generic Approval Engine through `approval_requests.requestable_type/requestable_id`.
+This is the Leave approvable record consumed by the generic Approval Engine through `approval_requests.approvable_type/approvable_id`.
 
 Important columns:
 

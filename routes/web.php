@@ -18,6 +18,7 @@ use App\Http\Controllers\EmployeeGovernmentIdController;
 use App\Http\Controllers\EmployeeUserMappingController;
 use App\Http\Controllers\EmploymentStatusController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
@@ -105,6 +106,12 @@ Route::middleware('auth')->group(function () {
         ->name('leave-types.archive');
     Route::post('leave-types/{id}/restore', [LeaveTypeController::class, 'restore'])
         ->name('leave-types.restore');
+
+    Route::resource('holidays', HolidayController::class)->except(['destroy']);
+    Route::post('holidays/{holiday}/archive', [HolidayController::class, 'archive'])
+        ->name('holidays.archive');
+    Route::post('holidays/{id}/restore', [HolidayController::class, 'restore'])
+        ->name('holidays.restore');
 
     /*
     |--------------------------------------------------------------------------

@@ -1,11 +1,19 @@
 # BOIE HRIS AI Handoff
 
+## 2026-08-19 Leave Slice 2 Update
+
+- Implemented Leave Slice 2 — Working Calendar + Leave Day Computation.
+- Added configurable Holiday master data with soft-delete archive/restore, date uniqueness, search, pagination, and CRUD validation.
+- Added the centralized `WorkingCalendarService` using explicit `Asia/Manila` business-date normalization, weekend rules, active-holiday lookup, inclusive ranges, and full/half-day unit computation.
+- Leave filing, Leave request/day persistence, reservations, Approval Engine integration, outcome mutation, rollover, and payroll payout remain unimplemented.
+- Current verification: 202 tests passed, 789 assertions.
+
 ## 2026-08-14 Leave Slice 1 Update
 
 - Implemented Leave Slice 1 — Leave Types + Anniversary Entitlement Foundation.
 - Added configurable Leave Type CRUD, soft-delete archive/restore, search, pagination, and idempotent VL/SL/EL seeding.
 - Added regularization-anniversary entitlement cycles and per-type granted-day snapshots with locking and database uniqueness guards.
-- Current verification: 191 tests passed, 745 assertions; all migrations applied, 167 routes registered, view cache, and `git diff --check` passed.
+- Current verification: 202 tests passed, 789 assertions; all migrations applied, 175 routes registered, view cache, and `git diff --check` passed.
 - Not implemented: working calendar, Leave filing, overlap validation, reservation lifecycle, Approval Engine Leave integration, approval outcome balance mutation, anniversary rollover execution, SL payroll payout processing, Notifications, Roles & Permissions, and Dashboard changes.
 
 ## Project
@@ -177,8 +185,8 @@
 - Executive
 
 ## Current Test Status
-- Full suite: 191 tests passed
-- Assertions: 745
+- Full suite: 202 tests passed
+- Assertions: 789
 - Filing-phase manual QA passed; broader browser smoke testing remains unavailable in the verification environment
 
 ## Current Master Data Status
@@ -201,6 +209,7 @@ Completed:
 - Employee Request Filing / Approver Selection Foundation: authenticated requester resolution, reusable eligible-approver picker, ordered route preview, HR-final append, real runtime submission, immutable snapshot confirmation, and missing-workflow handling
 - Employee Request Filing / Approver Selection Foundation final regression: 170 tests passed, 645 assertions
 - Approver Inbox / Approve-Reject-Cancel UI: current-step inbox, delegation-aware detail/actions, requester cancellation, action history, and server-side access control; phase regression was 178 tests and 700 assertions
+- Leave Slice 2: database-configured Holiday master data and centralized Asia/Manila Working Calendar + Leave Day Computation
 
 Pending:
 - Employee Documents workflow
@@ -211,10 +220,10 @@ Pending:
 - Payroll
 
 ## Next Planned Work
-The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, and Leave Slice 1 are implemented and regression-verified. The next phase is Leave Slice 2 — Working Calendar and day computation based on the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
+The Approval Pivot Foundation, Approval Engine Runtime / Request Snapshot Foundation, Employee Request Filing / Approver Selection Foundation, Approver Inbox / Approve-Reject-Cancel UI, Leave Slice 1, and Leave Slice 2 are implemented and regression-verified. The next phase is Leave filing and balance reservation based on the approved architecture in `docs/LEAVE-MODULE-ARCHITECTURE.md`.
 
 Then:
-1. Leave Slice 2 — Working Calendar and day computation
+1. Leave filing and balance reservation
 2. Employee Documents workflow
 3. Emergency Contact workflow
 4. Roles and Permissions

@@ -48,7 +48,7 @@
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link {{ request()->routeIs('companies.*', 'bases.*', 'units.*', 'departments.*', 'sections.*', 'positions.*', 'employment-statuses.*', 'employee-classes.*') ? 'active' : '' }}">
+                            <a href="#" class="nav-link {{ request()->routeIs('companies.*', 'bases.*', 'units.*', 'departments.*', 'sections.*', 'positions.*', 'employment-statuses.*', 'employee-classes.*', 'holidays.*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-sitemap"></i>
                                 <p>Organization <i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -61,6 +61,7 @@
                                 <li class="nav-item"><a href="{{ route('positions.index') }}" class="nav-link {{ request()->routeIs('positions.*') ? 'active' : '' }}"><p>Position</p></a></li>
                                 <li class="nav-item"><a href="{{ route('employment-statuses.index') }}" class="nav-link {{ request()->routeIs('employment-statuses.*') ? 'active' : '' }}"><p>Employment Status</p></a></li>
                                 <li class="nav-item"><a href="{{ route('employee-classes.index') }}" class="nav-link {{ request()->routeIs('employee-classes.*') ? 'active' : '' }}"><p>Employee Class</p></a></li>
+                                <li class="nav-item"><a href="{{ route('holidays.index') }}" class="nav-link {{ request()->routeIs('holidays.*') ? 'active' : '' }}"><p>Holidays</p></a></li>
                             </ul>
                         </li>
 

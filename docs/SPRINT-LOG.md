@@ -257,3 +257,12 @@ Status: Complete
 - Added eligibility checks, cycle boundary handling, repeat-call idempotency, employee-row locking, and database uniqueness guards.
 - Deferred working calendar, Leave filing, reservations, Approval Engine integration, approval outcomes, rollover execution, and payroll payout processing.
 - Verification: 191 tests passed, 745 assertions; 167 routes registered and manual QA passed for the Slice 1 Leave Type and anniversary-entitlement flows.
+# 2026-08-19 — Leave Slice 2: Working Calendar + Leave Day Computation
+
+Status: Complete
+
+- Added database-configured Holiday master data with soft-delete archive/restore and date uniqueness.
+- Added centralized `WorkingCalendarService` with explicit `Asia/Manila` business-date handling, weekend/active-holiday rules, inclusive ranges, and full-day/AM-PM half-day computations.
+- No annual holiday list was seeded without an authoritative source.
+- Deferred Leave filing, Leave request/day persistence, reservations, Approval Engine integration, outcome mutation, rollover, and SL payroll payout.
+- Verification: 202 tests passed, 789 assertions.
